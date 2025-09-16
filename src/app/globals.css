@@ -3,6 +3,36 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand color variables (derived from design scan) */
+  /* Primary blues */
+  --color-primary-dark-blue: #0B3C89;
+  --color-primary-deep-blue: #002E74;
+  --color-primary-bright-blue: #015CE7;
+
+  /* Primary gold */
+  --color-primary-gold: #FFCC33;
+
+  /* Secondary tones */
+  --color-secondary-light-gold: #F4D24D;
+  --color-secondary-gold: #D4AF37;
+  --color-secondary-blue: #0A58AF;
+  --color-secondary-dark-gold: #C9A12E;
+
+  /* Accent colors */
+  --color-accent-deep-blue: #0026CE;
+  --color-accent-navy: #002C6E;
+  --color-accent-bright-yellow: #F4DB00;
+  --color-accent-golden: #D5A407;
+  --color-accent-dark-golden: #AA8C2B;
+  --color-accent-dark-gray: #3F3856;
+
+  /* Neutrals */
+  --color-neutral-white: #FFFFFF;
+  --color-neutral-slate: #3B4D73;
+  --color-neutral-dark-gray: #1E1E1E;
+  --color-neutral-black: #0A0A0A;
+  --color-neutral-dark-navy: #0A1B3D;
 }
 
 @theme inline {
@@ -12,6 +42,34 @@
   --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);
   --font-montserrat: var(--font-montserrat);
+
+  /* Tailwind color tokens mapped to brand variables */
+  /* Blues (brand) */
+  --color-brand-blue-900: var(--color-primary-deep-blue);
+  --color-brand-blue-800: var(--color-accent-navy);
+  --color-brand-blue-700: var(--color-primary-dark-blue);
+  --color-brand-blue-600: var(--color-secondary-blue);
+  --color-brand-blue-500: var(--color-primary-bright-blue);
+
+  /* Golds */
+  --color-brand-gold: var(--color-primary-gold);
+  --color-gold-700: var(--color-secondary-dark-gold);
+  --color-gold-600: var(--color-secondary-gold);
+  --color-gold-500: var(--color-secondary-light-gold);
+  --color-gold-400: var(--color-accent-golden);
+  --color-gold-300: var(--color-accent-dark-golden);
+
+  /* Accents */
+  --color-accent-blue-900: var(--color-accent-deep-blue);
+  --color-yellow-500: var(--color-accent-bright-yellow);
+  --color-slate-700: var(--color-neutral-slate);
+  --color-deep-gray: var(--color-accent-dark-gray);
+
+  /* Neutrals */
+  --color-white: var(--color-neutral-white);
+  --color-black: var(--color-neutral-black);
+  --color-gray-900: var(--color-neutral-dark-gray);
+  --color-navy-900: var(--color-neutral-dark-navy);
 }
 
 @media (prefers-color-scheme: dark) {

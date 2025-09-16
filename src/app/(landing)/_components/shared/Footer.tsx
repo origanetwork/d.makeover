@@ -1,15 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
+import { Facebook, Instagram, Youtube } from 'lucide-react'
 
-type Props = {}
 
-const Footer: React.FC<Props> = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="relative isolate text-white bg-gradient-to-br from-[#002E74] via-[#00398F] to-[#0156D8]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0 py-12 md:py-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
           {/* Brand + Description */}
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <Image
               src="/landing-page/home/midas-logo.png"
               alt="Midas Gold Point"
@@ -24,7 +24,7 @@ const Footer: React.FC<Props> = () => {
             <div className="mt-6 flex items-center gap-4 text-white/90">
               {/* Social icons */}
               <a href="#" aria-label="Facebook" className="hover:opacity-80 transition">
-                
+                <Facebook width={22} height={22} fill='currentColor'/>
               </a>
               <a href="#" aria-label="Twitter" className="hover:opacity-80 transition">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -32,14 +32,10 @@ const Footer: React.FC<Props> = () => {
                 </svg>
               </a>
               <a href="#" aria-label="Instagram" className="hover:opacity-80 transition">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                  <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 2a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm6.25-.75a1 1 0 110 2 1 1 0 010-2z"/>
-                </svg>
+               <Instagram width={22} height={22}/>
               </a>
               <a href="#" aria-label="YouTube" className="hover:opacity-80 transition">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                  <path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.57A3.01 3.01 0 000 6.2 31.77 31.77 0 000 12c0 1.92.1 3.84.5 5.8a3.01 3.01 0 002.12 2.13c.4-1.96.5-3.88.5-5.8s-.1-3.84-.5-5.8zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/>
-                </svg>
+               <Youtube width={25} height={25}/>
               </a>
             </div>
           </div>

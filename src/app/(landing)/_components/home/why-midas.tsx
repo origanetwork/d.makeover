@@ -1,4 +1,34 @@
+'use client'
 import React from 'react'
+import ClientOnly from '../shared/ClientOnly'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+
+// Import Swiper styles for pagination
+import 'swiper/css/pagination'
+
+// Custom styles for golden pagination
+const swiperStyles = `
+  .swiper-golden-pagination .swiper-pagination-bullet {
+    background: rgba(255, 204, 51, 0.3);
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #FFCC33;
+    transition: all 0.3s ease;
+  }
+  
+  .swiper-golden-pagination .swiper-pagination-bullet-active {
+    background: #FFCC33;
+    box-shadow: 0 0 10px rgba(255, 204, 51, 0.5);
+    transform: scale(1.2);
+  }
+  
+  .swiper-golden-pagination .swiper-pagination-bullet:hover {
+    background: rgba(255, 204, 51, 0.6);
+    transform: scale(1.1);
+  }
+`
 
 type Props = {}
 
@@ -89,72 +119,150 @@ const features = [
   },
 ]
 
+// Extracted feature card component for reusability
+const FeatureCard: React.FC<{ feature: typeof features[0]; isMobile?: boolean }> = ({ feature, isMobile = false }) => {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl border-2 border-brand-gold p-7 sm:p-8 shadow-[0_10px_25px_rgba(1,33,105,0.25)] text-white transition-transform duration-200 hover:-translate-y-1 ${
+        isMobile ? 'h-[220px] flex flex-col justify-between' : ''
+      }`}
+      style={{
+        // Base blue gradient + we add a conic highlight as a child overlay for better control
+        background: 'linear-gradient(135deg, var(--color-accent-navy) 0%, var(--color-primary-bright-blue) 100%)',
+      }}
+    >
+      {/* angular (conic) highlight per Figma: #015CEF (15%) to #0026CE (66%) */}
+      <div
+        className="pointer-events-none absolute -left-0 -top-0 h-full w-full opacity-100"
+        style={{
+          background:
+            'conic-gradient(from 210deg at 60% 50%, var(--color-accent-navy) 10deg, var(--color-primary-bright-blue) 360deg, var(--color-primary-bright-blue) 200deg, var(--color-accent-navy) 300deg)',
+          filter: 'blur(8px)',
+        }}
+        aria-hidden
+      />
+
+      {/* Content wrapper for mobile flex layout */}
+      <div className={isMobile ? 'flex flex-col h-full' : ''}>
+        {/* icon */}
+        <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 text-yellow-500">
+          {feature.icon}
+        </div>
+
+        <h3 className="relative z-10 mt-5 text-lg font-semibold tracking-tight text-center">
+          {feature.title}
+        </h3>
+        <p className={`relative z-10 mt-2 text-sm leading-relaxed text-white/80 text-center max-w-[42ch] mx-auto ${
+          isMobile ? 'flex-1 flex items-center justify-center' : ''
+        }`}>
+          {feature.desc}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 const WhyMidas: React.FC<Props> = () => {
   return (
-    <section className="relative bg-white py-16 sm:py-20">
+    <section className="relative bg-white py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <h2 className="text-center font-montserrat text-[#0B3C89] tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em] text-2xl sm:text-3xl md:text-4xl font-semibold">
+        <h2 className="text-center font-montserrat text-brand-blue-700 tracking-[0.18em] sm:tracking-[0.22em] md:tracking-[0.28em] text-2xl sm:text-3xl md:text-4xl font-semibold">
           WHY MIDAS IS THE RIGHT PICK
         </h2>
        
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
+        {/* Mobile: Swiper Carousel */}
+        <div className="mt-10 block sm:hidden">
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            loop={true}
+            speed={600}
+            className="!pb-12 swiper-golden-pagination"
+          >
+            {features.map((f) => (
+              <SwiperSlide key={f.title}>
+                <FeatureCard feature={f} isMobile={true} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        {/* Desktop/Tablet: Grid Layout */}
+        <div className="mt-10 hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {features.map((f) => (
-            <div
-              key={f.title}
-              className="relative overflow-hidden rounded-2xl border-2 border-[#FFCC33] p-7 sm:p-8 shadow-[0_10px_25px_rgba(1,33,105,0.25)] text-white transition-transform duration-200 hover:-translate-y-1"
-              style={{
-                // Base blue gradient + we add a conic highlight as a child overlay for better control
-                background: 'linear-gradient(135deg, #002C6E 0%, #015CE7 100%)',
-              }}
-            >
-              {/* angular (conic) highlight per Figma: #015CEF (15%) to #0026CE (66%) */}
-              <div
-                className="pointer-events-none absolute -left-0 -top-0 h-full w-full opacity-100"
-                style={{
-                  background:
-                    'conic-gradient(from 210deg at 60% 50%, #002C6E 10deg, #015CE7 360deg, #015CE7 200deg, #002C6E 300deg)',
-                  filter: 'blur(8px)',
-                }}
-                aria-hidden
-              />
-
-              {/* icon */}
-              <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/20 text-[#F0C94A]">
-                {f.icon}
-              </div>
-
-              <h3 className="relative z-10 mt-5 text-lg font-semibold tracking-tight text-center">
-                {f.title}
-              </h3>
-              <p className="relative z-10 mt-2 text-sm leading-relaxed text-white/80 text-center max-w-[42ch] mx-auto">
-                {f.desc}
-              </p>
-            </div>
+            <FeatureCard key={f.title} feature={f} />
           ))}
         </div>
          {/* Video intro text matching the design */}
-         <p className="mt-16 text-center font-montserrat text-[#0B3C89]/90 max-w-7xl mx-auto text-base sm:text-lg md:text-xl  lg:whitespace-nowrap">
+         <p className="md:mt-16 mt-10 text-center font-montserrat text-brand-blue-700/90 max-w-7xl mx-auto text-base sm:text-lg md:text-xl  lg:whitespace-nowrap">
           Watch this quick video to see how you can sell, buy, or release gold with complete transparency.
         </p>
 
-        {/* Responsive 16:9 YouTube embed with autoplay (muted for browser compliance) */}
+        {/* Responsive 16:9 YouTube embed with client-only rendering. The card wrapper remains SSR for SEO. */}
         <div className="mt-10 flex justify-center">
-          <div className="w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-[#FFCC33] shadow-[0_10px_25px_rgba(1,33,105,0.25)]">
+          <div className="w-full max-w-4xl overflow-hidden rounded-2xl border-2 border-brand-gold shadow-[0_10px_25px_rgba(1,33,105,0.25)]">
             <div className="relative w-full pt-[56.25%]">{/* 16:9 aspect ratio */}
-              <iframe
-                className="absolute left-0 top-0 h-full w-full"
-                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playsinline=1&rel=0&modestbranding=1&controls=1`}
-                title="Midas - How it works"
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
-                allowFullScreen
-              />
+              <ClientOnly
+                fallback={
+                  <img
+                    src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`}
+                    alt="Midas - How it works (video preview)"
+                    className="absolute left-0 top-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                }
+              >
+                <iframe
+                  className="absolute left-0 top-0 h-full w-full"
+                  src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&playsinline=1&rel=0&modestbranding=1&controls=1`}
+                  title="Midas - How it works"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen; web-share"
+                  allowFullScreen
+                />
+              </ClientOnly>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* Custom styles for golden pagination */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .swiper-golden-pagination .swiper-pagination-bullet {
+            background: rgba(255, 204, 51, 0.3) !important;
+            opacity: 1 !important;
+            width: 12px !important;
+            height: 12px !important;
+            border: 2px solid #FFCC33 !important;
+            transition: all 0.3s ease !important;
+          }
+          
+          .swiper-golden-pagination .swiper-pagination-bullet-active {
+            background: #FFCC33 !important;
+            box-shadow: 0 0 10px rgba(255, 204, 51, 0.5) !important;
+            transform: scale(1.2) !important;
+          }
+          
+          .swiper-golden-pagination .swiper-pagination-bullet:hover {
+            background: rgba(255, 204, 51, 0.6) !important;
+            transform: scale(1.1) !important;
+          }
+        `
+      }} />
     </section>
   )
 }

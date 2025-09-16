@@ -12,11 +12,11 @@ const BottomNavbar: React.FC<Props> = ({ className }) => {
         className ?? ''
       }`}
     >
-      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {/* Sell Gold */}
         <button
           type="button"
-          className="flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-gradient-to-r from-[#A77B2C] to-[#D2B151] text-white font-medium shadow-md hover:opacity-95 transition"
+          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-gradient-to-r from-[#A77B2C] to-[#D2B151] text-white font-medium shadow-md hover:opacity-95 transition"
           aria-label="Sell Gold"
         >
           {/* Tag icon */}
@@ -41,7 +41,7 @@ const BottomNavbar: React.FC<Props> = ({ className }) => {
         {/* Release Gold */}
         <button
           type="button"
-          className="flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#0156D8] font-medium shadow-md hover:shadow-lg transition"
+          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#0156D8] font-medium shadow-md hover:shadow-lg transition"
           aria-label="Release Gold"
         >
           {/* Lock icon */}
@@ -62,7 +62,7 @@ const BottomNavbar: React.FC<Props> = ({ className }) => {
         {/* Live Gold Rate */}
         <button
           type="button"
-          className="flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#B08A33] ring-1 ring-[#E6D7AF] font-medium shadow-sm hover:shadow-md transition"
+          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#B08A33] ring-1 ring-[#E6D7AF] font-medium shadow-sm hover:shadow-md transition"
           aria-label="Live Gold Rate"
         >
           {/* Trending up icon */}
@@ -83,7 +83,7 @@ const BottomNavbar: React.FC<Props> = ({ className }) => {
         {/* WhatsApp Support */}
         <button
           type="button"
-          className="flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-[#25D366] text-white font-medium shadow-md hover:brightness-95 transition"
+          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-[#25D366] text-white font-medium shadow-md hover:brightness-95 transition"
           aria-label="WhatsApp Support"
         >
           {/* WhatsApp icon */}

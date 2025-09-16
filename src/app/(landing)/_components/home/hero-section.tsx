@@ -158,7 +158,7 @@ const HeroSection: React.FC = () => {
         />
       </div>
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#002E74] to-[#0156D8] opacity-90" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-blue-900 to-brand-blue-500 opacity-90" />
       {/* Hero illustration pinned bottom-right of the section */}
       <div ref={imageRef} className="pointer-events-none absolute bottom-0 -right-30 z-0 h-[360px] sm:h-[420px] md:h-[520px] w-[360px] sm:w-[420px] md:w-[520px]">
         <Image
@@ -171,11 +171,11 @@ const HeroSection: React.FC = () => {
         />
       </div>
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-28 md:py-52">
+      <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 sm:py-28 md:py-52">
 
           <div ref={contentRef} className="md:col-span-2">
-            <h1 className="hero-title text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-12 tracking-tight font-poppins">
+            <h1 className="hero-title text-white text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-12 tracking-tight font-poppins px-5 sm:px-0">
               <span className="block sm:whitespace-nowrap">{slides[index].headlineLine1}</span>
               <br className="hidden sm:block" />
               {slides[index].headlineLine2}
@@ -184,8 +184,8 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       {/* Bottom Navbar - centered near bottom */}
-      <div className="absolute left-1/2 bottom-16 z-10 -translate-x-1/2">
-        <BottomNavbar className="w-[520px] max-w-[92vw]" />
+      <div className="absolute lg:left-1/2 lg:bottom-16 lg:-translate-x-1/2 md:left-1/2 md:bottom-2/7 md:-translate-x-6/8 left-1/3 bottom-1/7 -translate-x-4/9">
+        <BottomNavbar className="lg:w-[520px] md:w-[420px] w-[325px] max-w-[65vw]" />
       </div>
     </section>
   )
