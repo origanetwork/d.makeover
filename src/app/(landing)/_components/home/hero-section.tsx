@@ -4,6 +4,11 @@ import Image from 'next/image'
 import BottomNavbar from '../shared/bottom-navbar'
 import { loadGSAP } from '@/lib/gsap'
 
+type GsapContextLike = {
+  revert: () => void
+  onVisibility?: () => void
+}
+
 const HeroSection: React.FC = () => {
   // Slides: update the image srcs to real assets as they become available.
   const slides = [
@@ -27,12 +32,15 @@ const HeroSection: React.FC = () => {
     },
   ] as const
 
+  // Stable dependency for effects that reference slides.length
+  const slidesLength = slides.length
+
   // SSR renders index 0 only for SEO; animations start post-hydration
   const [index, setIndex] = useState(0)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const gsapCtx = useRef<any>(null)
+  const gsapCtx = useRef<GsapContextLike | null>(null)
   const rotateRef = useRef<(() => void) | null>(null)
 
   // Start rotation after hydration; do not run on server
@@ -75,7 +83,7 @@ const HeroSection: React.FC = () => {
             )
             .add(() => {
               // update slide after out-animation completes
-              setIndex((prev) => (prev + 1) % slides.length)
+              setIndex((prev) => (prev + 1) % slidesLength)
             })
         }
         rotateRef.current = rotate
@@ -107,20 +115,22 @@ const HeroSection: React.FC = () => {
       }
       document.addEventListener('visibilitychange', onVisibility)
       // store remover on ctx for completeness
-      ;(gsapCtx as any).onVisibility = onVisibility
+      if (gsapCtx.current) {
+        gsapCtx.current.onVisibility = onVisibility
+      }
     })()
 
     return () => {
       isMounted = false
       if (intervalRef.current) clearInterval(intervalRef.current)
       // remove visibility listener if present
-      const listener = (gsapCtx as any)?.onVisibility as (() => void) | undefined
+      const listener = gsapCtx.current?.onVisibility
       if (listener) {
         document.removeEventListener('visibilitychange', listener)
       }
       gsapCtx.current?.revert()
     }
-  }, [])
+  }, [slidesLength]) 
 
   // Animate IN whenever index changes (after state commit)
   useEffect(() => {

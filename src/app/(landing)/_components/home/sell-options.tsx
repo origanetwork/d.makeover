@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { loadGSAP } from '@/lib/gsap'
 
-type Props = {}
 
 type Step = {
   title: string
@@ -20,10 +19,10 @@ const steps: Step[] = [
   { title: '6. Get Instant Cash / Transfer', content: 'Choose your preferred payout method—cash or bank transfer—processed immediately after your approval.' },
 ]
 
-const SellOptions: React.FC<Props> = (props: Props) => {
+const SellOptions: React.FC = () => {
   // only one open at a time
   const [openIdx, setOpenIdx] = useState<number | null>(null)
-  const [gsapRef, setGsapRef] = useState<any>(null)
+  const [gsapRef, setGsapRef] = useState<typeof import('gsap').gsap | null>(null)
   // Separate refs for desktop and mobile so hidden DOM doesn't conflict
   const panelsRefDesktop = useRef<Array<HTMLDivElement | null>>([])
   const panelsRefMobile = useRef<Array<HTMLDivElement | null>>([])

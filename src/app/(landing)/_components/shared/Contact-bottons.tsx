@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = {}
 
-const ContactButtons: React.FC<Props> = () => {
+
+const ContactButtons: React.FC = () => {
   return (
     <>
       {/* Desktop / Tablet: fixed on right center */}

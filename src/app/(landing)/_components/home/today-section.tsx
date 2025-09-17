@@ -18,9 +18,7 @@ function formatINR(value: number) {
   }).format(value)
 }
 
-export type TodaySectionProps = {}
-
-const TodaySection: React.FC<TodaySectionProps> = () => {
+const TodaySection: React.FC = () => {
   const [name, setName] = useState('')
   const [location, setLocation] = useState('')
   const [goldType, setGoldType] = useState<keyof typeof GOLD_RATES>('22K')

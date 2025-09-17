@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-type Props = {}
 
 const items = [
   {
@@ -26,7 +25,7 @@ const items = [
   },
 ]
 
-const WhoWeare: React.FC<Props> = (props: Props) => {
+const WhoWeare: React.FC = () => {
   return (
     <section className="relative bg-white/65 py-10 sm:py-20">
       {/* Background placeholder image (replace src with final asset later) */}

@@ -6,6 +6,7 @@ import { Autoplay, Pagination } from 'swiper/modules'
 
 // Import Swiper styles for pagination
 import 'swiper/css/pagination'
+import Image from 'next/image'
 
 // Custom styles for golden pagination
 const swiperStyles = `
@@ -30,7 +31,6 @@ const swiperStyles = `
   }
 `
 
-type Props = {}
 
 // YouTube video to embed on the page. Replace with your final ID as needed.
 const YOUTUBE_VIDEO_ID = 'SFcOL6AT-Hs'
@@ -162,7 +162,8 @@ const FeatureCard: React.FC<{ feature: typeof features[0]; isMobile?: boolean }>
   )
 }
 
-const WhyMidas: React.FC<Props> = () => {
+
+const WhyMidas: React.FC = () => {
   return (
     <section className="relative bg-white py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -216,11 +217,14 @@ const WhyMidas: React.FC<Props> = () => {
             <div className="relative w-full pt-[56.25%]">{/* 16:9 aspect ratio */}
               <ClientOnly
                 fallback={
-                  <img
+                  <Image
                     src={`https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/hqdefault.jpg`}
                     alt="Midas - How it works (video preview)"
                     className="absolute left-0 top-0 h-full w-full object-cover"
                     loading="lazy"
+                    fill
+                    sizes="100vw"
+                    unoptimized
                   />
                 }
               >
@@ -240,29 +244,7 @@ const WhyMidas: React.FC<Props> = () => {
       </div>
       
       {/* Custom styles for golden pagination */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          .swiper-golden-pagination .swiper-pagination-bullet {
-            background: rgba(255, 204, 51, 0.3) !important;
-            opacity: 1 !important;
-            width: 12px !important;
-            height: 12px !important;
-            border: 2px solid #FFCC33 !important;
-            transition: all 0.3s ease !important;
-          }
-          
-          .swiper-golden-pagination .swiper-pagination-bullet-active {
-            background: #FFCC33 !important;
-            box-shadow: 0 0 10px rgba(255, 204, 51, 0.5) !important;
-            transform: scale(1.2) !important;
-          }
-          
-          .swiper-golden-pagination .swiper-pagination-bullet:hover {
-            background: rgba(255, 204, 51, 0.6) !important;
-            transform: scale(1.1) !important;
-          }
-        `
-      }} />
+      <style dangerouslySetInnerHTML={{ __html: swiperStyles }} />
     </section>
   )
 }

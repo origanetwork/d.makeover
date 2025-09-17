@@ -59,10 +59,12 @@ export async function loadGSAP(options?: { plugins?: GSAPPluginName[] }) {
   const toLoad = options?.plugins ?? []
   for (const name of toLoad) {
     if (!registeredPlugins.has(name)) {
-      const mod: any = await pluginLoaders[name]()
-      const plugin = mod?.[name] ?? mod?.default
-      if (plugin) {
-        gsapSingleton!.registerPlugin(plugin)
+      // Dynamically import the plugin module and safely extract the plugin object without using 'any'
+      const mod = (await pluginLoaders[name]()) as Record<string, unknown>
+      const maybePlugin = (mod[name] ?? (mod as Record<string, unknown>).default) as unknown
+      if (maybePlugin && (typeof maybePlugin === 'object' || typeof maybePlugin === 'function')) {
+        // gsap.registerPlugin accepts plugin objects/functions; assert to object per GSAP types
+        gsapSingleton!.registerPlugin(maybePlugin as object)
         registeredPlugins.add(name)
       }
     }

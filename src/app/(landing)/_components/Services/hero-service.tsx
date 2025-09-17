@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-type Props = {}
 
 // Core Services hero section for the Services page.
 // - Blue gradient background with subtle abstract wave image
@@ -10,7 +9,7 @@ type Props = {}
 // - Right column person image
 // - Floating contact buttons (phone, WhatsApp)
 // - Gold card for live gold rates with phone input and Get OTP button
-const ServiceHero: React.FC<Props> = (props: Props) => {
+const ServiceHero: React.FC = () => {
   const [phone, setPhone] = useState("")
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {

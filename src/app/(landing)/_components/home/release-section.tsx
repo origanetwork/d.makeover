@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { loadGSAP } from '@/lib/gsap'
 
-type Props = {}
 
 type Step = { title: string; content: string }
 
@@ -16,10 +15,10 @@ const releaseSteps: Step[] = [
   { title: '6. Cash in Hand', content: 'Get your money instantly via cash or bank transfer once you approve.' },
 ]
 
-const ReleaseSection: React.FC<Props> = (props: Props) => {
+const ReleaseSection: React.FC = () => {
   // one open at a time
   const [openIdx, setOpenIdx] = useState<number | null>(null)
-  const [gsapRef, setGsapRef] = useState<any>(null)
+  const [gsapRef, setGsapRef] = useState<typeof import('gsap').gsap | null>(null)
   // Separate refs for desktop and mobile to avoid conflicts between hidden branches
   const panelsRefDesktop = useRef<Array<HTMLDivElement | null>>([])
   const panelsRefMobile = useRef<Array<HTMLDivElement | null>>([])

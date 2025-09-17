@@ -1,32 +1,36 @@
 "use client"
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { loadGSAP } from '@/lib/gsap'
 
-type Props = {}
+interface CustomEasePlugin { create?: (name: string, definition: string) => void; get?: (name: string) => unknown }
 
-const MenuIcon: React.FC<Props> = (props: Props) => {
+const MenuIcon: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const menuRef = useRef<HTMLDivElement | null>(null)
   const popoverRef = useRef<HTMLDivElement | null>(null)
-  const gsapRef = useRef<any>(null)
+  const gsapRef = useRef<typeof import('gsap').gsap | null>(null)
   const easeReadyRef = useRef(false)
 
   // Load GSAP and register CustomEase on client
   useEffect(() => {
     let alive = true
+    // Snapshot nodes for cleanup to avoid ref drift
+    const initialMenuNode = menuRef.current
+    const initialPopoverNode = popoverRef.current
     ;(async () => {
       const gsap = await loadGSAP()
       if (!gsap || !alive) return
       gsapRef.current = gsap
       try {
-        const mod: any = await import('gsap/CustomEase')
-        const CustomEase = mod?.CustomEase ?? mod?.default
+        const mod = (await import('gsap/CustomEase')) as { CustomEase?: unknown; default?: unknown }
+        const CustomEase = (mod.CustomEase ?? mod.default) as CustomEasePlugin | undefined
         if (CustomEase && !easeReadyRef.current) {
-          gsap.registerPlugin(CustomEase)
-          if (!CustomEase.get('circleEase')) {
-            CustomEase.create('circleEase', '0.68, -0.55, 0.265, 1.55')
+          gsap.registerPlugin(CustomEase as object)
+          if (!CustomEase.get?.('circleEase')) {
+            CustomEase.create?.('circleEase', '0.68, -0.55, 0.265, 1.55')
           }
           easeReadyRef.current = true
         }
@@ -38,11 +42,13 @@ const MenuIcon: React.FC<Props> = (props: Props) => {
     return () => {
       alive = false
       const gsap = gsapRef.current
-      if (gsap && menuRef.current) {
-        gsap.killTweensOf(menuRef.current.querySelectorAll('.dot'))
+      const menuNode = initialMenuNode
+      const popoverNode = initialPopoverNode
+      if (gsap && menuNode) {
+        gsap.killTweensOf(menuNode.querySelectorAll('.dot'))
       }
-      if (gsap && popoverRef.current) {
-        gsap.killTweensOf(popoverRef.current)
+      if (gsap && popoverNode) {
+        gsap.killTweensOf(popoverNode)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -241,7 +247,11 @@ const MenuIcon: React.FC<Props> = (props: Props) => {
     setIsOpen((prev) => {
       const next = !prev
       // Play animation based on the next state
-      next ? activateMenu() : deactivateMenu()
+      if (next) {
+        activateMenu()
+      } else {
+        deactivateMenu()
+      }
       return next
     })
   }, [activateMenu, deactivateMenu, isAnimating])
@@ -276,7 +286,8 @@ const MenuIcon: React.FC<Props> = (props: Props) => {
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.removeEventListener('pointerdown', handlePointerDown, { capture: true } as any)
+      // Use the same capture option (boolean) to remove the listener without 'any' casts
+      document.removeEventListener('pointerdown', handlePointerDown, true)
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen, closeMenu])
@@ -310,34 +321,34 @@ const MenuIcon: React.FC<Props> = (props: Props) => {
         <div className="p-8 pt-16 pb-6">
           {/* Navigation Items */}
           <nav className="space-y-6">
-            <a
+            <Link
               href="/"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
               onClick={onToggle}
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="/about"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
               onClick={onToggle}
             >
               About
-            </a>
-            <a
+            </Link>
+            <Link
               href="/services"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
               onClick={onToggle}
             >
               Services
-            </a>
-            <a
+            </Link>
+            <Link
               href="#contacts"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
               onClick={onToggle}
             >
               Contacts
-            </a>
+            </Link>
           </nav>
 
           {/* Contact Info */}

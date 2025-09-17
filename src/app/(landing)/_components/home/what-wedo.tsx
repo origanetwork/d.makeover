@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 
-type Props = {}
 
 type Service = {
   title: string
@@ -34,7 +33,7 @@ const services: Service[] = [
   },
 ]
 
-const WhatWeDo: React.FC<Props> = (props: Props) => {
+const WhatWeDo: React.FC = () => {
   return (
     <section className="relative py-12 sm:py-16 bg-white">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
