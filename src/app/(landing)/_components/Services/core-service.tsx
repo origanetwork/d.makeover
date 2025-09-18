@@ -47,7 +47,7 @@ const services: Service[] = [
 
 const Bullet = () => (
   <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border-2 border-brand-blue-600">
-    <span className="h-2 w-2 rounded-full bg-brand-blue-600" />
+    <span className="h-2 w-2 rounded-full bg-gold-600" />
   </span>
 )
 
@@ -77,17 +77,17 @@ const Coreservice = () => {
   return (
     <section
       aria-labelledby="core-services-heading"
-      className="relative isolate overflow-hidden border-t border-white/20 bg-gradient-to-tr from-[#002E74] to-[#0156D8]"
+      className="relative isolate overflow-hidden border-t border-white/20 bg-gradient-to-tr from-[#FFF7DC] to-[#e8debf]"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <h2
           id="core-services-heading"
-          className="text-center font-montserrat text-3xl sm:text-4xl md:text-5xl font-extrabold text-white"
+          className="text-center font-montserrat text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-blue-800/95"
         >
           Our Core Services
         </h2>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <ServiceCard key={s.title} {...s} />
           ))}

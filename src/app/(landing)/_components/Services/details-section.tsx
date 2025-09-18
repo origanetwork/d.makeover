@@ -53,9 +53,11 @@ const DetailsSection = () => {
 
             <ul role="list" className="mt-10 space-y-5 text-slate-800">
               {bullets.map((b) => (
-                <li key={b.title} className="flex items-start gap-4">
-                  <CircleCheck/>
-                  <p className="text-[15px] sm:text-[1.05rem] leading-7">
+                <li key={b.title} className="flex items-start gap-3 sm:gap-4">
+                  <span className="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full ring-1 ring-slate-300 text-brand-blue-700">
+                    <CircleCheck className="h-4 w-4" strokeWidth={2} />
+                  </span>
+                  <p className="text-[15px] sm:text-[1.05rem] leading-7 sm:leading-8">
                     <span className="font-semibold text-gray-900">{b.title}: </span>
                     <span className="text-slate-700">{b.text}</span>
                   </p>
@@ -78,7 +80,6 @@ const DetailsSection = () => {
                 src="/landing-page/home/person-1.png"
                 alt="Customer getting instant valuation for old gold"
                 fill
-                priority
                 sizes="(min-width: 1024px) 560px, 90vw"
                 className="object-cover"
               />

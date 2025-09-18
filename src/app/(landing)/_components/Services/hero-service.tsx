@@ -19,7 +19,7 @@ const ServiceHero: React.FC = () => {
   }
 
   return (
-    <section aria-labelledby="services-heading" className="relative isolate overflow-visible">
+    <section aria-labelledby="services-heading" className="relative isolate overflow-hidden">
       {/* Background gradient layer */}
       <div className="absolute inset-0 -z-10" 
       style={{
@@ -40,8 +40,8 @@ const ServiceHero: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid max-h-[560px] grid-cols-1 items-center gap-y-10 pt-28 pb-28 md:grid-cols-2">
           {/* Left: Heading + Tagline */}
-          <div className="text-white font-montserrat">
-            <h1 id="services-heading" className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          <div className="text-white font-montserrat z-10 mt-10 sm:mt-0">
+            <h1 id="services-heading" className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl whitespace-break-spaces md:whitespace-nowrap">
               Our Services
             </h1>
             <p className="mt-4 text-2xl font-semibold leading-tight text-white/90 sm:text-5xl whitespace-nowrap">
@@ -50,7 +50,7 @@ const ServiceHero: React.FC = () => {
           </div>
 
           {/* Right: Person image */}
-          <div className="relative h-[320px] sm:h-[380px] md:h-[440px]">
+          <div className="relative z-0 self-end h-[320px] sm:h-[380px] md:h-[450px]">
             <Image
               src="/landing-page/home/person-1.png"
               alt="Happy customer"
@@ -65,7 +65,7 @@ const ServiceHero: React.FC = () => {
 
 
       {/* Floating gold rate card */}
-      <div className="absolute left-1/2 bottom-[-90px] z-40 w-full max-w-4xl -translate-x-1/2 ">
+      {/* <div className="absolute left-1/2 bottom-[-90px] z-40 w-full max-w-4xl -translate-x-1/2 ">
         <div className="rounded-2xl p-5 shadow-2xl ring-1 ring-black/10 backdrop-blur" 
         style={{
           background:
@@ -96,7 +96,7 @@ const ServiceHero: React.FC = () => {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

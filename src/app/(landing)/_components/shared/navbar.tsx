@@ -1,7 +1,20 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import MenuIcon from './MenuIcon'
+import dynamic from 'next/dynamic'
+
+const MenuIcon = dynamic(() => import('./MenuIcon'), {
+  ssr: false,
+  loading: () => (
+    <div aria-hidden className="relative h-12 w-12">
+      {/* Static 4-dot grid to mirror MenuIcon's initial state (no animation) */}
+      <div className="absolute top-2 left-2 h-[10px] w-[10px] rounded-full bg-white" />
+      <div className="absolute top-2 right-2 h-[10px] w-[10px] rounded-full bg-white" />
+      <div className="absolute bottom-2 left-2 h-[10px] w-[10px] rounded-full bg-white" />
+      <div className="absolute bottom-2 right-2 h-[10px] w-[10px] rounded-full bg-white" />
+    </div>
+  ),
+})
 
 const Navbar: React.FC = () => {
 

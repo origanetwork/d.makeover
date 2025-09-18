@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { ShoppingBag, ShoppingCart } from 'lucide-react'
 
 
 type Service = {
@@ -101,6 +102,52 @@ const WhatWeDo: React.FC = () => {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+        {/* Gift CTA Banner */}
+        <div className="mt-8 sm:mt-10">
+          <div className="relative overflow-hidden rounded-[22px] shadow-[0_15px_40px_rgba(1,33,105,0.18)]">
+            {/* Background image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/landing-page/home/buygold.png"
+                alt="Gold coins background"
+                fill
+                priority={false}
+                sizes="(min-width:1024px) 1024px, 100vw"
+                className="object-cover scale-[1.05]"
+              />
+            </div>
+
+            {/* Blue gradient overlay to match the reference */}
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-blue-800/90 via-brand-blue-700/85 to-brand-blue-600/80" aria-hidden />
+
+            {/* Content */}
+            <div className="relative px-5 py-8 sm:px-10 sm:py-10 md:py-12 text-center">
+              <h4 className="font-montserrat text-white text-xl sm:text-2xl md:text-3xl font-semibold">
+                A Precious Gift for Your Loved Ones
+              </h4>
+              <p className="mx-auto mt-3 sm:mt-4 max-w-4xl text-white/90 text-sm sm:text-base leading-relaxed">
+                Gold coins are more than just gifts, they are timeless symbols of love, blessings, and prosperity. Perfect for
+                weddings, birthdays, or festivals, a gold coin makes every celebration shine brighter and lasts a lifetime.
+              </p>
+
+              <div className="mt-5 sm:mt-6">
+                <a
+                  href="#buy-gold"
+                  className="inline-flex items-center gap-2 rounded-lg px-6 h-11 font-semibold text-brand-blue-700 shadow-[inset_0_-2px_0_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 hover:brightness-95"
+                  aria-label="Buy gold coins now"
+                  style={{
+                    background:
+                      'linear-gradient(100deg, var(--color-secondary-light-gold) 40%, var(--color-accent-dark-golden) 100%, var(--color-accent-dark-golden) 100%)',
+                  }}
+                >
+                  <span>Buy Now</span>
+                  {/* Calendar icon */}
+                  <ShoppingBag />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

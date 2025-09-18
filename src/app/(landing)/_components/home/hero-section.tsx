@@ -37,6 +37,7 @@ const HeroSection: React.FC = () => {
 
   // SSR renders index 0 only for SEO; animations start post-hydration
   const [index, setIndex] = useState(0)
+  const [bgLoaded, setBgLoaded] = useState(false)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -155,26 +156,37 @@ const HeroSection: React.FC = () => {
   }, [index])
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Background image using next/image */}
-      <div className="absolute inset-0 -z-20 opacity-70">
+      {/* Background image using next/image (fade-in on load) */}
+      <div
+        className="absolute inset-0 -z-20 transition-opacity duration-700 ease-out"
+        style={{ opacity: bgLoaded ? 0.7 : 0 }}
+      >
         <Image
           src="/landing-page/home/background.png"
           alt="background-image"
           fill
-          priority
           sizes="100vw"
+          loading="lazy"
           className="object-cover object-center"
           aria-hidden="true"
+          onLoadingComplete={() => setBgLoaded(true)}
         />
       </div>
       {/* Background gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-blue-900 to-brand-blue-500 opacity-90" />
       {/* Hero illustration pinned bottom-right of the section */}
-      <div ref={imageRef} className="pointer-events-none absolute bottom-0 -right-30 z-0 h-[360px] sm:h-[420px] md:h-[520px] w-[360px] sm:w-[420px] md:w-[520px]">
+      <div
+        ref={imageRef}
+        className="pointer-events-none absolute bottom-0 -right-30 z-0 h-[360px] sm:h-[420px] md:h-[520px] w-[360px] sm:w-[420px] md:w-[520px]"
+        style={{ willChange: 'transform, opacity' }}
+      >
         <Image
           src={slides[index].image}
           alt={slides[index].imageAlt}
           fill
+          priority={index === 0}
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><rect width='10' height='10' fill='%231b3a8a'/></svg>"
           sizes="(min-width: 768px) 520px, 100vw"
           className="object-contain"
           aria-hidden="true"
@@ -184,7 +196,11 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 sm:py-28 md:py-52">
 
-          <div ref={contentRef} className="md:col-span-2">
+          <div
+            ref={contentRef}
+            className="md:col-span-2"
+            style={{ willChange: 'transform, opacity' }}
+          >
             <h1 className="hero-title text-white text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-12 tracking-tight font-poppins px-5 sm:px-0">
               <span className="block sm:whitespace-nowrap">{slides[index].headlineLine1}</span>
               <br className="hidden sm:block" />

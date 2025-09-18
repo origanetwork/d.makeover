@@ -315,7 +315,7 @@ const MenuIcon: React.FC = () => {
       <div
         ref={popoverRef}
         className="absolute top-0 right-0 bg-white rounded-2xl shadow-2xl border border-gray-100 min-w-[280px] z-40"
-        style={{ transformOrigin: 'top right' }}
+        style={{ transformOrigin: 'top right', transform: 'scale(0)', opacity: 0, visibility: 'hidden' }}
       >
         {/* Navigation Content */}
         <div className="p-8 pt-16 pb-6">
