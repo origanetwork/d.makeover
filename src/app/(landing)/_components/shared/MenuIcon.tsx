@@ -320,7 +320,7 @@ const MenuIcon: React.FC = () => {
         {/* Navigation Content */}
         <div className="p-8 pt-16 pb-6">
           {/* Navigation Items */}
-          <nav className="space-y-6">
+          <nav className="space-y-4">
             <Link
               href="/"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
@@ -343,11 +343,18 @@ const MenuIcon: React.FC = () => {
               Services
             </Link>
             <Link
-              href="#contacts"
+              href="/blogs"
               className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
               onClick={onToggle}
             >
-              Contacts
+              Blogs
+            </Link>
+            <Link
+              href="/contact"
+              className="block text-2xl font-medium text-black hover:text-gray-600 transition-colors"
+              onClick={onToggle}
+            >
+              Contact
             </Link>
           </nav>
 

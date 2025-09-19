@@ -10,13 +10,9 @@ import Image from 'next/image'
 // - Floating contact buttons (phone, WhatsApp)
 // - Gold card for live gold rates with phone input and Get OTP button
 const ServiceHero: React.FC = () => {
-  const [phone, setPhone] = useState("")
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // TODO: hook this to your OTP API
-    // For now, just no-op
-  }
+
+
 
   return (
     <section aria-labelledby="services-heading" className="relative isolate overflow-hidden">

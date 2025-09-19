@@ -31,21 +31,21 @@ const pillars: Pillar[] = [
 ]
 
 const Icon: React.FC<{ name: Pillar['icon'] }> = ({ name }) => {
-  const base = 'h-8 w-8 fill-white'
+
   switch (name) {
     case 'shield':
       return (
         <svg xmlns="http://www.w3.org/2000/svg" className='h-10 w-10 text-gold-300' fill="none" viewBox="0 0 24 24">
-        <g stroke="#D4AF37" stroke-linecap="round" stroke-width="1.5">
-          <path stroke-linejoin="round" d="m9.5 12.4 1.429 1.6 3.571-4"/>
+        <g stroke="#D4AF37" strokeLinecap="round" strokeWidth="1.5">
+          <path strokeLinejoin="round" d="m9.5 12.4 1.429 1.6 3.571-4"/>
           <path d="M3 10.417c0-3.198 0-4.797.378-5.335.377-.537 1.88-1.052 4.887-2.081l.573-.196C10.405 2.268 11.188 2 12 2c.811 0 1.595.268 3.162.805l.573.196c3.007 1.029 4.51 1.544 4.887 2.081C21 5.62 21 7.22 21 10.417v1.574c0 2.505-.837 4.437-2 5.913M3.193 14c.857 4.298 4.383 6.513 6.706 7.527.721.315 1.082.473 2.101.473 1.02 0 1.38-.158 2.101-.473.579-.252 1.231-.58 1.899-.994"/>
         </g>
       </svg>
       )
     case 'users':
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" className='h-9 w-9 text-gold-300' fill="none"   viewBox="0 0 24 24">
-  <path stroke="#D4AF37" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 15a4 4 0 0 1 4 4v2h-2m-5-10.126a4.002 4.002 0 0 0 0-7.748M5 15a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4H9M9 3a4 4 0 1 0 3.465 2"/>
+        <svg xmlns="http://www.w3.org/2000/svg" className='h-9 w-9 text-gold-300' fill="none" viewBox="0 0 24 24">
+  <path stroke="#D4AF37" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 15a4 4 0 0 1 4 4v2h-2m-5-10.126a4.002 4.002 0 0 0 0-7.748M5 15a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4H9M9 3a4 4 0 1 0 3.465 2"/>
 </svg>
       )
     case 'award':
