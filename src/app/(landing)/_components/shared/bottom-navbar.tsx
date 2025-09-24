@@ -1,96 +1,301 @@
 'use client'
-import React from 'react'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import LiveGoldRatesCard from './LiveGoldRatesCard'
+import { useRouter } from 'next/navigation'
 
 type Props = {
   className?: string
+  variant?: 'default' | 'flat'
 }
 
-const BottomNavbar: React.FC<Props> = ({ className }) => {
+const BottomNavbar: React.FC<Props> = ({ className, variant = 'default' }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [phone, setPhone] = useState<string>('')
+  const [mounted, setMounted] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const router = useRouter()
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    router.push('/live-gold')
+    // TODO: integrate with OTP flow
+    console.log('Requesting OTP for:', phone)
+  }
+
+  const closeModal = () => {
+    setIsOpen(false)
+    // wait for exit animation
+    setTimeout(() => setShowModal(false), 200)
+  }
+
+  // Close on ESC
+  useEffect(() => {
+    if (!showModal) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [showModal])
+
+  // Mount flag to safely use document in React 18/Next.js
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Body scroll lock while modal is shown (including during exit animation)
+  useEffect(() => {
+    if (!mounted) return
+    const prev = document.body.style.overflow
+    if (showModal) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = prev || ''
+    }
+    return () => {
+      document.body.style.overflow = prev || ''
+    }
+  }, [showModal, mounted])
+
   return (
     <div
-      className={`shine auto-shine rounded-2xl border border-white/40 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)] p-3 sm:p-4 ${
-        className ?? ''
-      }`}
+      className={`shine auto-shine ${
+        variant === 'flat'
+          ? 'rounded-2xl border border-white/20 bg-gray-900/60 backdrop-blur-lg shadow-[0_6px_18px_rgba(0,0,0,0.28)]'
+          : 'rounded-2xl border border-white/40 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)]'
+      } p-3 sm:p-4 ${className ?? ''}`}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-        {/* Sell Gold */}
-        <button
-          type="button"
-          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-gradient-to-r from-[#A77B2C] to-[#D2B151] text-white font-medium shadow-md hover:opacity-95 transition"
-          aria-label="Sell Gold"
-        >
-          {/* Tag icon */}
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="shrink-0"
+      {variant === 'flat' ? (
+        <div className="grid grid-cols-4 gap-2 overflow-hidden sm:flex sm:items-center sm:gap-3 sm:overflow-x-auto sm:whitespace-nowrap [-ms-overflow-style:'none'] [scrollbar-width:'none'] [&::-webkit-scrollbar]:hidden">
+          {/* Sell Gold */}
+          <Link
+            href="/services/sell-gold"
+            prefetch
+            className="flex flex-col sm:flex-row items-center justify-center cursor-pointer gap-1.5 sm:gap-2 h-16 sm:h-auto rounded-xl px-2 py-2.5 sm:px-4 sm:py-3 text-center bg-gradient-to-r from-[#A77B2C] to-[#D2B151] text-white font-medium shadow-md hover:opacity-95 transition sm:flex-shrink-0"
+            aria-label="Sell Gold"
           >
-            <path
-              d="M20.59 13.41l-7.18 7.18a2 2 0 01-2.83 0L3 13.01V3h10.01l7.58 7.58a2 2 0 010 2.83z"
-              fill="currentColor"
-              opacity=".9"
+            {/* Tag icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <path
+                d="M20.59 13.41l-7.18 7.18a2 2 0 01-2.83 0L3 13.01V3h10.01l7.58 7.58a2 2 0 010 2.83z"
+                fill="currentColor"
+                opacity=".9"
+              />
+              <circle cx="7.5" cy="7.5" r="1.5" fill="#ffffff" />
+            </svg>
+            <span className="text-[11px] sm:text-base leading-tight text-center">Sell Gold</span>
+          </Link>
+
+          {/* Release Gold */}
+          <Link
+            href="/services/release-gold"
+            prefetch
+            className="flex flex-col sm:flex-row items-center justify-center cursor-pointer gap-1.5 sm:gap-2 h-16 sm:h-auto rounded-xl px-2 py-2.5 sm:px-4 sm:py-3 text-center bg-white text-[#0156D8] font-medium shadow-md hover:shadow-lg transition sm:flex-shrink-0"
+            aria-label="Release Gold"
+          >
+            {/* Lock icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <rect x="5" y="10" width="14" height="10" rx="2" stroke="#0156D8" strokeWidth="2" />
+              <path d="M8 10V7a4 4 0 118 0v3" stroke="#0156D8" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <span className="text-[11px] sm:text-base leading-tight text-center">Release Gold</span>
+          </Link>
+
+          {/* Divider */}
+          <div className="hidden sm:block h-6 mx-1 sm:mx-2 border-l border-dashed border-white/30" />
+
+          {/* Live Gold Rate */}
+          <button
+            type="button"
+            onClick={() => {
+              setShowModal(true)
+              // next tick to allow transition classes to apply
+              setTimeout(() => setIsOpen(true), 0)
+            }}
+            className="flex flex-col sm:flex-row items-center justify-center cursor-pointer gap-1.5 sm:gap-2 h-16 sm:h-auto rounded-xl px-2 py-2.5 sm:px-3 sm:py-3 text-center bg-white text-[#B08A33] ring-1 ring-[#E6D7AF] font-medium shadow-sm hover:shadow-md transition sm:flex-shrink-0"
+            aria-label="Live Gold Rate"
+          >
+            {/* Trending up icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <path d="M3 17l6-6 4 4 7-7" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M14 8h6v6" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="text-[11px] sm:text-base leading-tight text-center">Live Gold Rate</span>
+          </button>
+
+          {/* WhatsApp Support */}
+          <button
+            type="button"
+            className="flex items-center justify-center gap-3 cursor-pointer rounded-xl h-16 sm:h-auto px-0 sm:px-6 py-2.5 sm:py-3 bg-[#25D366] text-white font-medium shadow-md hover:brightness-95 transition sm:flex-shrink-0"
+            aria-label="WhatsApp Support"
+            onClick={() => window.open('https://wa.me/', '_blank', 'noopener,noreferrer')}
+          >
+            {/* WhatsApp icon */}
+            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px" fillRule="evenodd" clipRule="evenodd"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"/><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"/><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clipRule="evenodd"/></svg>
+            <span className="hidden sm:inline whitespace-nowrap sm:text-base ">WhatsApp Support</span>
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          {/* Sell Gold */}
+          <Link
+            href="/services/sell-gold"
+            prefetch
+            className="w-full flex items-center cursor-pointer gap-3 rounded-xl px-5 sm:px-6 py-3 bg-gradient-to-r from-[#A77B2C] to-[#D2B151] text-white font-medium shadow-md hover:opacity-95 transition"
+            aria-label="Sell Gold"
+          >
+            {/* Tag icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <path
+                d="M20.59 13.41l-7.18 7.18a2 2 0 01-2.83 0L3 13.01V3h10.01l7.58 7.58a2 2 0 010 2.83z"
+                fill="currentColor"
+                opacity=".9"
+              />
+              <circle cx="7.5" cy="7.5" r="1.5" fill="#ffffff" />
+            </svg>
+            <span className="whitespace-nowrap">Sell Gold</span>
+          </Link>
+
+          {/* Release Gold */}
+          <Link
+            href="/services/release-gold"
+            prefetch
+            className="w-full flex items-center cursor-pointer gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#0156D8] font-medium shadow-md hover:shadow-lg transition"
+            aria-label="Release Gold"
+          >
+            {/* Lock icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <rect x="5" y="10" width="14" height="10" rx="2" stroke="#0156D8" strokeWidth="2" />
+              <path d="M8 10V7a4 4 0 118 0v3" stroke="#0156D8" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <span className="whitespace-nowrap">Release Gold</span>
+          </Link>
+
+          {/* Live Gold Rate */}
+          <button
+            type="button"
+            onClick={() => {
+              setShowModal(true)
+              // next tick to allow transition classes to apply
+              setTimeout(() => setIsOpen(true), 0)
+            }}
+            className="w-full flex items-center cursor-pointer gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#B08A33] ring-1 ring-[#E6D7AF] font-medium shadow-sm hover:shadow-md transition"
+            aria-label="Live Gold Rate"
+          >
+            {/* Trending up icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0"
+            >
+              <path d="M3 17l6-6 4 4 7-7" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M14 8h6v6" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="whitespace-nowrap">Live Gold Rate</span>
+          </button>
+
+          {/* WhatsApp Support */}
+          <button
+            type="button"
+            className="w-full flex items-center gap-3 cursor-pointer rounded-xl px-5 sm:px-6 py-3 bg-[#25D366] text-white font-medium shadow-md hover:brightness-95 transition"
+            aria-label="WhatsApp Support"
+            onClick={() => window.open('https://wa.me/', '_blank', 'noopener,noreferrer')}
+          >
+            {/* WhatsApp icon */}
+            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px" fillRule="evenodd" clipRule="evenodd"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"/><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"/><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clipRule="evenodd"/></svg>
+            <span className="whitespace-nowrap">WhatsApp Support</span>
+          </button>
+        </div>
+      )}
+      {/* Modal overlay for Live Gold Rates (portal to body) */}
+      {mounted && showModal &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Live Gold Rates"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          >
+            {/* Backdrop */}
+            <div
+              className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-200 ${
+                isOpen ? 'opacity-100' : 'opacity-0'
+              }`}
+              onClick={closeModal}
             />
-            <circle cx="7.5" cy="7.5" r="1.5" fill="#ffffff" />
-          </svg>
-          <span className="whitespace-nowrap">Sell Gold</span>
-        </button>
 
-        {/* Release Gold */}
-        <button
-          type="button"
-          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#0156D8] font-medium shadow-md hover:shadow-lg transition"
-          aria-label="Release Gold"
-        >
-          {/* Lock icon */}
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="shrink-0"
-          >
-            <rect x="5" y="10" width="14" height="10" rx="2" stroke="#0156D8" strokeWidth="2" />
-            <path d="M8 10V7a4 4 0 118 0v3" stroke="#0156D8" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          <span className="whitespace-nowrap">Release Gold</span>
-        </button>
+            {/* Dialog panel */}
+            <div
+              className={`relative z-[101] w-full max-w-2xl mx-auto transition-all duration-200 ease-out ${
+                isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1'
+              }`}
+            >
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={closeModal}
+                className="absolute -top-3 -right-3 h-9 w-9 rounded-full bg-white text-black shadow ring-1 ring-black/10 flex items-center justify-center hover:bg-gray-100 z-10"
+                aria-label="Close"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </button>
 
-        {/* Live Gold Rate */}
-        <button
-          type="button"
-          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-white text-[#B08A33] ring-1 ring-[#E6D7AF] font-medium shadow-sm hover:shadow-md transition"
-          aria-label="Live Gold Rate"
-        >
-          {/* Trending up icon */}
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="shrink-0"
-          >
-            <path d="M3 17l6-6 4 4 7-7" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M14 8h6v6" stroke="#B08A33" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span className="whitespace-nowrap">Live Gold Rate</span>
-        </button>
-
-        {/* WhatsApp Support */}
-        <button
-          type="button"
-          className="w-full flex items-center gap-3 rounded-xl px-5 sm:px-6 py-3 bg-[#25D366] text-white font-medium shadow-md hover:brightness-95 transition"
-          aria-label="WhatsApp Support"
-        >
-          {/* WhatsApp icon */}
-          <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px" fillRule="evenodd" clipRule="evenodd"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"/><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"/><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" fillRule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clipRule="evenodd"/></svg>
-          <span className="whitespace-nowrap">WhatsApp Support</span>
-        </button>
-      </div>
+              <LiveGoldRatesCard
+                floating={false}
+                phone={phone}
+                onPhoneChange={setPhone}
+                onSubmit={(e) => {
+                  onSubmit(e)
+                  closeModal()
+                }}
+                className=""
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   )
 }

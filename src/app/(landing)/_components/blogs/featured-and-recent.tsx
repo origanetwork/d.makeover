@@ -14,7 +14,7 @@ const latest = {
   title: 'Why Transparency Matters in Gold Buying',
   excerpt:
     "At Midas Gold Point, every transaction is built on trust. Learn why transparent testing, accurate valuation, and clear pricing ensure you get the true worth of your gold.",
-  image: '/landing-page/home/whoweare.png',
+  image: '/landing-page/home/buygold.png',
   href: '#',
 }
 
@@ -52,9 +52,9 @@ const FeaturedAndRecent: React.FC = () => {
   return (
     <section aria-labelledby="latest-and-recent" className="relative bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-8xl px-5 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           {/* Left: Latest Blog (spans 2 columns on md+) */}
-          <article className="md:col-span-2">
+          <article className="col-span-2 md:col-span-2">
             <div className="rounded-2xl border border-brand-gold shadow-[0_10px_25px_rgba(1,33,105,0.15)] overflow-hidden">
               <div className="relative aspect-[16/9]">
                 <Image
@@ -90,13 +90,14 @@ const FeaturedAndRecent: React.FC = () => {
               </div>
             </div>
           </article>
+          
 
           {/* Right: Recent Blogs */}
-          <aside className="md:col-span-1">
+          <aside className="col-span-2 md:col-span-1">
             <h3 className="text-2xl font-semibold text-slate-900 font-montserrat">Recent Blogs</h3>
             <ul className="mt-6 space-y-6">
               {recents.map((post) => (
-                <li key={post.title} className="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+                <li key={post.title} className="grid grid-cols-2 md:grid-cols-2 gap-5 items-start">
                   {/* Left: Image with metadata below */}
                   <div>
                     <div className="relative w-full aspect-[4/3] overflow-hidden rounded-md ring-1 ring-black/10">

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import BottomNavbar from '../shared/bottom-navbar'
 import { loadGSAP } from '@/lib/gsap'
+import { useRouter } from 'next/navigation'
 
 type GsapContextLike = {
   revert: () => void
@@ -27,7 +28,7 @@ const HeroSection: React.FC = () => {
     {
       headlineLine1: 'Track Live Gold Prices',
       headlineLine2: 'Make Smart Decisions',
-      image: '/landing-page/home/person-2.png',
+      image: '/landing-page/home/heroperson-2.png',
       imageAlt: 'Live gold price tracking',
     },
   ] as const
@@ -43,6 +44,20 @@ const HeroSection: React.FC = () => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const gsapCtx = useRef<GsapContextLike | null>(null)
   const rotateRef = useRef<(() => void) | null>(null)
+
+  const router = useRouter()
+
+  // Prefetch key routes to make nav taps feel instant
+  useEffect(() => {
+    try {
+      router.prefetch('/services/sell-gold')
+      router.prefetch('/services/release-gold')
+      router.prefetch('/services/buy-gold')
+      router.prefetch('/services')
+    } catch (_) {
+      // no-op: prefetch is best-effort
+    }
+  }, [router])
 
   // Start rotation after hydration; do not run on server
   useEffect(() => {
@@ -155,7 +170,7 @@ const HeroSection: React.FC = () => {
     })()
   }, [index])
   return (
-    <section className="relative isolate overflow-hidden">
+    <section id="hero" className="relative isolate overflow-hidden">
       {/* Background image using next/image (fade-in on load) */}
       <div
         className="absolute inset-0 -z-20 transition-opacity duration-700 ease-out"
@@ -210,8 +225,8 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       {/* Bottom Navbar - centered near bottom */}
-      <div className="absolute lg:left-1/2 lg:bottom-16 lg:-translate-x-1/2 md:left-1/2 md:bottom-2/7 md:-translate-x-6/8 left-1/3 bottom-1/7 -translate-x-4/9">
-        <BottomNavbar className="lg:w-[520px] md:w-[420px] w-[325px] max-w-[65vw]" />
+      <div className="absolute lg:left-1/2 lg:bottom-16 lg:-translate-x-1/2 md:left-1/2 md:bottom-[28.57%] md:-translate-x-[70%] left-1/3 bottom-[14.29%] -translate-x-[44.44%] z-20">
+        <BottomNavbar className="lg:w-[520px] md:w-[520px] w-[325px] max-w-[65vw]" />
       </div>
     </section>
   )

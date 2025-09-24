@@ -7,6 +7,7 @@ import ReleaseSection from './_components/home/release-section'
 import TodaySection from './_components/home/today-section'
 import Testimonials from './_components/home/testimonials'
 import ContactSection from './_components/home/contact-section'
+import SecondaryBottomNavbarController from './_components/home/secondary-bottom-navbar-controller'
 
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
         <Testimonials />
         <ContactSection mapQuery="Angamaly South,Angamaly, Kerala" />
       </main>
+      {/* Sticky secondary navbar controller (renders portal to body) */}
+      <SecondaryBottomNavbarController />
     </>
   )
 }

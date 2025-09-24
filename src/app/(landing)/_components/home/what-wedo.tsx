@@ -16,21 +16,21 @@ const services: Service[] = [
     desc:
       'Get instant cash at the best market rates with certified purity checks and a transparent evaluation process.',
     img: '/landing-page/home/sellgold.png',
-    href: '#sell-gold',
+    href: '/services/sell-gold',
   },
   {
     title: 'Buy Gold Bars & Coins',
     desc:
       'Each piece comes with assured purity, transparent pricing, and secure purchase ideal for investing or gifting.',
     img: '/landing-page/home/buygold.png',
-    href: '#buy-gold',
+    href: '/services/buy-gold',
   },
   {
     title: 'Release Pledged Gold',
     desc:
       'Transparent, hassle-free paperwork and immediate cash settlement at the best rates to release your pledged gold.',
     img: '/landing-page/home/release.png',
-    href: '#release-gold',
+    href: '/services/release-gold',
   },
 ]
 
@@ -134,7 +134,7 @@ const WhatWeDo: React.FC = () => {
 
               <div className="mt-5 sm:mt-6">
                 <a
-                  href="#buy-gold"
+                  href="/services/buy-gold"
                   className="inline-flex items-center gap-2 rounded-lg px-6 h-11 font-semibold text-brand-blue-700 shadow-[inset_0_-2px_0_rgba(0,0,0,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 hover:brightness-95"
                   aria-label="Buy gold coins now"
                   style={{

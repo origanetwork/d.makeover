@@ -28,7 +28,7 @@ const ContactSection: React.FC<Props> = ({
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#F7F1DC]/80 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-[#F7F1DC]/80 py-16 sm:py-20" id="contact">
       {/* Background image via next/image */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <Image

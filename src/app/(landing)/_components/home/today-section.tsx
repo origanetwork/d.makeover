@@ -1,6 +1,7 @@
 "use client"
 import React, { useMemo, useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/image' 
+import { useRouter } from 'next/navigation'
 
 // Simple mock rates per gram (INR). In a real app, fetch live rates via API.
 const GOLD_RATES: Record<string, number> = {
@@ -19,6 +20,7 @@ function formatINR(value: number) {
 }
 
 const TodaySection: React.FC = () => {
+  const router = useRouter()
   const [name, setName] = useState('')
   const [location, setLocation] = useState('')
   const [goldType, setGoldType] = useState<keyof typeof GOLD_RATES>('22K')
@@ -194,7 +196,8 @@ const TodaySection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={!isValid}
-                    className="mt-1 inline-flex w-full items-center justify-center rounded-xl px-4 py-3.5 font-semibold text-brand-blue-700 shadow-[0_8px_18px_rgba(255,204,51,0.35)] disabled:cursor-not-allowed disabled:opacity-100 "
+                    onClick={() => router.push('/live-gold')}
+                    className="mb-2 inline-flex w-full items-center justify-center rounded-xl px-4 py-3.5 font-semibold text-brand-blue-700 shadow-[0_8px_18px_rgba(255,204,51,0.35)] disabled:cursor-not-allowed disabled:opacity-100 "
                     style={{
                       background: `${isValid ? 'linear-gradient(130deg, var(--color-accent-dark-golden) 10%, var(--color-accent-bright-yellow) 50%, var(--color-secondary-gold) 100%)' : 'linear-gradient(130deg, var(--color-secondary-gold) 30%, var(--color-secondary-gold) 50%, var(--color-secondary-gold) 100%)'}`
                     }}
@@ -203,19 +206,6 @@ const TodaySection: React.FC = () => {
                     Check Gold Price Now
                     <svg className="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                   </button>
-
-                  {/* Result */}
-                  <div className="min-h-[1.5rem] pt-1" aria-live="polite">
-                    {submitted && estimated && (
-                      <p className="text-white/95 text-sm">
-                        Estimated value for {qtyNum}g of {goldType} gold at {formatINR(estimated.rate)}/g is
-                        <span className="font-bold"> {formatINR(estimated.amount)}</span>.
-                      </p>
-                    )}
-                    {submitted && !isValid && (
-                      <p className="text-yellow-200/95 text-sm">Please fix the errors above to get an estimate.</p>
-                    )}
-                  </div>
                 </form>
               </div>
             </div>

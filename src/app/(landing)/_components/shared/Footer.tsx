@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Facebook, Instagram, Youtube } from 'lucide-react'
 
 
@@ -44,9 +45,9 @@ const Footer: React.FC = () => {
           <div className="mt-10 md:mt-14">
             <h3 className="font-semibold tracking-wide mb-4">About Us</h3>
             <ul className="space-y-3 text-slate-200">
-              <li><a href="#" className="hover:text-white transition">Why Choose Us</a></li>
-              <li><a href="#" className="hover:text-white transition">Purity &amp; Valuation Process</a></li>
-              <li><a href="#" className="hover:text-white transition">Customer Reviews</a></li>
+              <li><Link href="/about#why-choose-us" prefetch className="hover:text-white transition">Why Choose Us</Link></li>
+              <li><Link href="/about#about-overview" prefetch className="hover:text-white transition">Purity &amp; Valuation Process</Link></li>
+              <li><Link href="/#testimonials" prefetch className="hover:text-white transition">Customer Reviews</Link></li>
             </ul>
           </div>
 
@@ -54,10 +55,10 @@ const Footer: React.FC = () => {
           <div className="mt-10 md:mt-14">
             <h3 className="font-semibold tracking-wide mb-4">Services</h3>
             <ul className="space-y-3 text-slate-200">
-              <li><a href="#" className="hover:text-white transition">Sell Gold</a></li>
-              <li><a href="#" className="hover:text-white transition">Buy Gold Bars &amp; Coins</a></li>
-              <li><a href="#" className="hover:text-white transition">Release Pledged Gold</a></li>
-              <li><a href="#" className="hover:text-white transition">Gold Valuation</a></li>
+              <li><Link href="/services/sell-gold" prefetch className="hover:text-white transition">Sell Gold</Link></li>
+              <li><Link href="/services/buy-gold" prefetch className="hover:text-white transition">Buy Gold Bars &amp; Coins</Link></li>
+              <li><Link href="/services/release-gold" prefetch className="hover:text-white transition">Release Pledged Gold</Link></li>
+              <li><Link href="/services" prefetch className="hover:text-white transition">Gold Valuation</Link></li>
             </ul>
           </div>
 
@@ -65,9 +66,9 @@ const Footer: React.FC = () => {
           <div className="mt-10 md:mt-14">
             <h3 className="font-semibold tracking-wide mb-4">Quick Links</h3>
             <ul className="space-y-3 text-slate-200">
-              <li><a href="#" className="hover:text-white transition">Home</a></li>
-              <li><a href="#" className="hover:text-white transition">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition">FAQs</a></li>
+              <li><Link href="/" prefetch className="hover:text-white transition">Home</Link></li>
+              <li><Link href="/blogs" prefetch className="hover:text-white transition">Blog</Link></li>
+              <li><Link href="/#contact" prefetch className="hover:text-white transition">FAQs</Link></li>
             </ul>
           </div>
 
@@ -75,7 +76,7 @@ const Footer: React.FC = () => {
           <div className="mt-10 md:mt-14">
             <h3 className="font-semibold tracking-wide mb-4">Legal</h3>
             <ul className="space-y-3 text-slate-200">
-              <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+              <li><Link href="/" prefetch className="hover:text-white transition">Privacy Policy</Link></li>
               <li><a href="#" className="hover:text-white transition">Terms &amp; Conditions</a></li>
               <li><a href="#" className="hover:text-white transition">Support</a></li>
             </ul>

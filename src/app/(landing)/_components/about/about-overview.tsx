@@ -59,7 +59,7 @@ const cards: Array<{ title: string; description: string; icon: 'shield' | 'users
 
 const AboutOverview: React.FC = () => {
   return (
-    <section aria-labelledby="about-overview" className="relative isolate bg-white py-16 sm:py-20">
+    <section aria-labelledby="about-overview" className="relative isolate bg-white py-16 sm:py-20" id="about-overview">
       <div className="mx-auto max-w-7xl">
         {/* Top two-column layout: text + image */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center px-4 sm:px-6 lg:px-8">

@@ -19,7 +19,7 @@ const services: Service[] = [
       'Trusted by Modern Investors & Gold Owners',
       '100% Certified Purity & Authenticity',
     ],
-    cta: { href: '#live-rate', label: 'Check Live Rate ↗' },
+    cta: { href: '/services/buy-gold', label: 'Buy Gold ↗' },
   },
   {
     title: 'Sell Old Gold',
@@ -30,7 +30,7 @@ const services: Service[] = [
       'Best Market Value for Old Gold',
       'Transparent Pricing with No Deductions',
     ],
-    cta: { href: '#sell-gold', label: 'Sell Old Gold ↗' },
+    cta: { href: '/services/sell-gold', label: 'Sell Old Gold ↗' },
   },
   {
     title: 'Release Gold',
@@ -41,7 +41,7 @@ const services: Service[] = [
       'Transparent & Competitive Pricing',
       'Complete Document & Loan Support',
     ],
-    cta: { href: '#release-gold', label: 'Release My Gold ↗' },
+    cta: { href: '/services/release-gold', label: 'Release My Gold ↗' },
   },
 ]
 

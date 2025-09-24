@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
   }
 
   return (
-    <section className="relative bg-[#0B3C89] py-12 sm:py-16">
+    <section className="relative bg-[#0B3C89] py-12 sm:py-16" id="testimonials">
       <div className="mx-auto max-w-7xl">
         {/* Banner container */}
         <div

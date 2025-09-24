@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins , Montserrat } from "next/font/google";
 import "./globals.css";
 import 'swiper/css';
@@ -18,8 +18,26 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Midas",
-  description: "A clean Next.js app with TypeScript and Tailwind CSS",
+  title: "Midas Gold Point | Buy Gold, Sell Gold, Release Gold",
+  description: "Buy Gold, Sell Gold, Release Gold",
+  icons: {
+    icon: [
+      { url: "/favicon_midas/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_midas/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon_midas/favicon.ico" },
+    ],
+    shortcut: [
+      "/favicon_midas/favicon.ico",
+    ],
+    apple: [
+      { url: "/favicon_midas/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/favicon_midas/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

@@ -300,7 +300,7 @@ const MenuIcon: React.FC = () => {
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
         onClick={onToggle}
-        className="relative h-12 w-12 flex items-center justify-center text-white hover:opacity-80 transition focus:outline-none overflow-visible z-50"
+        className={`${isOpen ? 'bg-brand-blue-600 rounded-b-full ease-in sha' : 'bg-transparent'} relative h-12 w-12 flex items-center justify-center text-white hover:opacity-80 transition-all ease-in-out focus:outline-none overflow-visible z-50`}
       >
         {/* 4-dot grid to X animation target */}
         <div ref={menuRef} className="relative h-12 w-12 overflow-visible" aria-hidden>
