@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
     <header className="absolute inset-x-0 top-0 z-20">
       <nav className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-0 py-4 flex items-center justify-between">
         <Image
-          src="/landing-page/home/midas-logo.png"
+          src="/landing-page/home/ddot-logo-image.png"
           alt="Logo"
           width={160}
           height={100}

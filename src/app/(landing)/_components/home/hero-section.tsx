@@ -1,176 +1,15 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
-import BottomNavbar from '../shared/bottom-navbar'
-import { loadGSAP } from '@/lib/gsap'
-import { useRouter } from 'next/navigation'
-
-type GsapContextLike = {
-  revert: () => void
-  onVisibility?: () => void
-}
 
 const HeroSection: React.FC = () => {
-  // Slides: update the image srcs to real assets as they become available.
-  const slides = [
-    {
-      headlineLine1: 'Sell, Release, or Buy Gold',
-      headlineLine2: 'Quick & Transparent',
-      image: '/landing-page/home/hero-image.webp',
-      imageAlt: 'Gold trading made simple',
-    },
-    {
-      headlineLine1: 'Instant Gold Loans, Fair Rates',
-      headlineLine2: 'Secure & Hassle-free',
-      image: '/landing-page/home/person-1.png',
-      imageAlt: 'Instant gold loan',
-    },
-    {
-      headlineLine1: 'Track Live Gold Prices',
-      headlineLine2: 'Make Smart Decisions',
-      image: '/landing-page/home/heroperson-2.png',
-      imageAlt: 'Live gold price tracking',
-    },
-  ] as const
 
-  // Stable dependency for effects that reference slides.length
-  const slidesLength = slides.length
-
-  // SSR renders index 0 only for SEO; animations start post-hydration
-  const [index, setIndex] = useState(0)
   const [bgLoaded, setBgLoaded] = useState(false)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const gsapCtx = useRef<GsapContextLike | null>(null)
-  const rotateRef = useRef<(() => void) | null>(null)
 
-  const router = useRouter()
-
-  // Prefetch key routes to make nav taps feel instant
-  useEffect(() => {
-    try {
-      router.prefetch('/services/sell-gold')
-      router.prefetch('/services/release-gold')
-      router.prefetch('/services/buy-gold')
-      router.prefetch('/services')
-    } catch (_) {
-      // no-op: prefetch is best-effort
-    }
-  }, [router])
-
-  // Start rotation after hydration; do not run on server
-  useEffect(() => {
-    let isMounted = true
-    ;(async () => {
-      const gsap = await loadGSAP()
-      if (!gsap || !isMounted) return
-
-      gsapCtx.current = gsap.context(() => {
-        // Initial entrance for SSR-rendered first slide (subtle)
-        if (contentRef.current) {
-          gsap.fromTo(
-            contentRef.current,
-            { opacity: 0, y: 16 },
-            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
-          )
-        }
-        if (imageRef.current) {
-          gsap.fromTo(
-            imageRef.current,
-            { opacity: 0, scale: 0.98 },
-            { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }
-          )
-        }
-
-        const rotate = () => {
-          if (!contentRef.current || !imageRef.current) return
-          const tl = gsap.timeline()
-          tl.to(contentRef.current, {
-            opacity: 0,
-            y: -16,
-            duration: 0.35,
-            ease: 'power2.in',
-          })
-            .to(
-              imageRef.current,
-              { opacity: 0, scale: 0.98, duration: 0.35, ease: 'power2.in' },
-              '<' // sync with content
-            )
-            .add(() => {
-              // update slide after out-animation completes
-              setIndex((prev) => (prev + 1) % slidesLength)
-            })
-        }
-        rotateRef.current = rotate
-
-        // helper to (re)start interval
-        const startInterval = () => {
-          if (intervalRef.current) return
-          intervalRef.current = setInterval(() => rotateRef.current?.(), 3000)
-        }
-
-        // Rotate every 6s (can be tuned). First slide displays immediately (SSR) then animates.
-        startInterval()
-
-      })
-
-      // Pause when tab hidden, resume when visible (registered outside gsap context)
-      const onVisibility = () => {
-        if (document.hidden) {
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current)
-            intervalRef.current = null
-          }
-        } else {
-          // restart interval on visibility regain
-          if (!intervalRef.current) {
-            intervalRef.current = setInterval(() => rotateRef.current?.(), 2000)
-          }
-        }
-      }
-      document.addEventListener('visibilitychange', onVisibility)
-      // store remover on ctx for completeness
-      if (gsapCtx.current) {
-        gsapCtx.current.onVisibility = onVisibility
-      }
-    })()
-
-    return () => {
-      isMounted = false
-      if (intervalRef.current) clearInterval(intervalRef.current)
-      // remove visibility listener if present
-      const listener = gsapCtx.current?.onVisibility
-      if (listener) {
-        document.removeEventListener('visibilitychange', listener)
-      }
-      gsapCtx.current?.revert()
-    }
-  }, [slidesLength]) 
-
-  // Animate IN whenever index changes (after state commit)
-  useEffect(() => {
-    ;(async () => {
-      const gsap = await loadGSAP()
-      if (!gsap) return
-      if (contentRef.current) {
-        gsap.fromTo(
-          contentRef.current,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }
-        )
-      }
-      if (imageRef.current) {
-        gsap.fromTo(
-          imageRef.current,
-          { opacity: 0, scale: 0.98 },
-          { opacity: 1, scale: 1, duration: 0.45, ease: 'power2.out' }
-        )
-      }
-    })()
-  }, [index])
   return (
-    <section id="hero" className="relative isolate overflow-hidden">
+    <section id="home" className="relative isolate overflow-hidden h-[60vh] sm:h-[55vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh]">
       {/* Background image using next/image (fade-in on load) */}
       <div
         className="absolute inset-0 -z-20 transition-opacity duration-700 ease-out"
@@ -188,18 +27,17 @@ const HeroSection: React.FC = () => {
         />
       </div>
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-blue-900 to-brand-blue-500 opacity-90" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-brand-green-900 to-brand-green-800 opacity-80" />
       {/* Hero illustration pinned bottom-right of the section */}
       <div
         ref={imageRef}
-        className="pointer-events-none absolute bottom-0 -right-30 z-0 h-[360px] sm:h-[420px] md:h-[520px] w-[360px] sm:w-[420px] md:w-[520px]"
+        className="pointer-events-none absolute -bottom-4 -right-0 z-0 h-[330px] sm:h-[390px] md:h-[490px] w-[330px] sm:w-[390px] md:w-[490px]"
         style={{ willChange: 'transform, opacity' }}
       >
         <Image
-          src={slides[index].image}
-          alt={slides[index].imageAlt}
+          src='/landing-page/home/hero-image.png'
+          alt='makeover'
           fill
-          priority={index === 0}
           placeholder="blur"
           blurDataURL="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><rect width='10' height='10' fill='%231b3a8a'/></svg>"
           sizes="(min-width: 768px) 520px, 100vw"
@@ -209,24 +47,19 @@ const HeroSection: React.FC = () => {
       </div>
       {/* Content */}
       <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 sm:py-28 md:py-52">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 sm:py-28 md:py-68">
 
           <div
             ref={contentRef}
             className="md:col-span-2"
             style={{ willChange: 'transform, opacity' }}
           >
-            <h1 className="hero-title text-white text-3xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-12 tracking-tight font-poppins px-5 sm:px-0">
-              <span className="block sm:whitespace-nowrap">{slides[index].headlineLine1}</span>
-              <br className="hidden sm:block" />
-              {slides[index].headlineLine2}
+            <h1 className="hero-title text-white text-3xl sm:text-4xl md:text-3xl lg:text-5xl font-normal tracking-wider font-felix-titling px-5 sm:px-0">
+              <span className="block sm:whitespace-nowrap">REDEFINING STYLE, RENEWING CONFIDENCE</span>
             </h1>
+            <h2 className='test-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
           </div>
         </div>
-      </div>
-      {/* Bottom Navbar - centered near bottom */}
-      <div className="absolute lg:left-1/2 lg:bottom-16 lg:-translate-x-1/2 md:left-1/2 md:bottom-[28.57%] md:-translate-x-[70%] left-1/3 bottom-[14.29%] -translate-x-[44.44%] z-20">
-        <BottomNavbar className="lg:w-[520px] md:w-[520px] w-[325px] max-w-[65vw]" />
       </div>
     </section>
   )

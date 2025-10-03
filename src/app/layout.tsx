@@ -1,12 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins , Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import 'swiper/css';
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+const felixTitling = localFont({
+  src: [
+    {
+      path: '../../public/fonts/FelixTitling.ttf',
+      weight: '400',
+    },
+  ],
+  variable: "--font-felix-titling",
   display: 'swap',
 });
 
@@ -18,22 +23,22 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Midas Gold Point | Buy Gold, Sell Gold, Release Gold",
-  description: "Buy Gold, Sell Gold, Release Gold",
+  title: "D dot makeover",
+  description: "d dot makeover",
   icons: {
     icon: [
-      { url: "/favicon_midas/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon_midas/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon_midas/favicon.ico" },
+      { url: "/favicon_ddot/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon_ddot/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon_ddot/favicon.ico" },
     ],
     shortcut: [
-      "/favicon_midas/favicon.ico",
+      "/favicon_ddot/favicon.ico",
     ],
     apple: [
-      { url: "/favicon_midas/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon_ddot/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
-  manifest: "/favicon_midas/site.webmanifest",
+  manifest: "/favicon_ddot/site.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -48,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${montserrat.variable} antialiased`}
+        className={`${felixTitling.variable} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

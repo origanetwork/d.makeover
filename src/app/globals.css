@@ -5,27 +5,23 @@
   --foreground: #171717;
 
   /* Brand color variables (derived from design scan) */
-  /* Primary blues */
-  --color-primary-dark-blue: #0B3C89;
-  --color-primary-deep-blue: #002E74;
-  --color-primary-bright-blue: #015CE7;
+  /* Primary greens */
+  --color-primary-dark-green: #036370;
+  --color-primary-deep-green: #044048;
+  --color-primary-bright-green: #0A9BAE;
 
   /* Primary gold */
-  --color-primary-gold: #FFCC33;
+  --color-primary-gold: #E6C493;
 
   /* Secondary tones */
-  --color-secondary-light-gold: #F4D24D;
-  --color-secondary-gold: #D4AF37;
-  --color-secondary-blue: #0A58AF;
-  --color-secondary-dark-gold: #C9A12E;
+  --color-secondary-gold: #E6C493;
+  --color-secondary-green: #0A9BAE;
+  --color-secondary-dark-gold: #806D52;
 
   /* Accent colors */
-  --color-accent-deep-blue: #0026CE;
-  --color-accent-navy: #002C6E;
-  --color-accent-bright-yellow: #F4DB00;
-  --color-accent-golden: #D5A407;
-  --color-accent-dark-golden: #AA8C2B;
-  --color-accent-dark-gray: #3F3856;
+  --color-accent-deep-green: #044048;
+  --color-accent-navy: #044048;
+  --color-accent-dark-gold: #806D52;
 
   /* Neutrals */
   --color-neutral-white: #FFFFFF;
@@ -40,27 +36,27 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-poppins: var(--font-poppins);
+  --font-felix-titling: var(--font-felix-titling);
   --font-montserrat: var(--font-montserrat);
 
   /* Tailwind color tokens mapped to brand variables */
-  /* Blues (brand) */
-  --color-brand-blue-900: var(--color-primary-deep-blue);
-  --color-brand-blue-800: var(--color-accent-navy);
-  --color-brand-blue-700: var(--color-primary-dark-blue);
-  --color-brand-blue-600: var(--color-secondary-blue);
-  --color-brand-blue-500: var(--color-primary-bright-blue);
+  /* greens (brand) */
+  --color-brand-green-900: var(--color-primary-deep-green);
+  --color-brand-green-800: var(--color-accent-navy);
+  --color-brand-green-700: var(--color-primary-dark-green);
+  --color-brand-green-600: var(--color-secondary-green);
+  --color-brand-green-500: var(--color-primary-bright-green);
 
   /* Golds */
   --color-brand-gold: var(--color-primary-gold);
-  --color-gold-700: var(--color-secondary-dark-gold);
+  --color-brand-gold-500: var(--color-primary-gold);
+  --color-gold-900: var(--color-secondary-dark-gold);
   --color-gold-600: var(--color-secondary-gold);
-  --color-gold-500: var(--color-secondary-light-gold);
   --color-gold-400: var(--color-accent-golden);
   --color-gold-300: var(--color-accent-dark-golden);
 
   /* Accents */
-  --color-accent-blue-900: var(--color-accent-deep-blue);
+  --color-accent-green-900: var(--color-accent-deep-green);
   --color-yellow-500: var(--color-accent-bright-yellow);
   --color-slate-700: var(--color-neutral-slate);
   --color-deep-gray: var(--color-accent-dark-gray);

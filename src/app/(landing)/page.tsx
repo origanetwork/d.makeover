@@ -1,13 +1,11 @@
 import HeroSection from './_components/home/hero-section'
-import WhyMidas from './_components/home/why-midas'
-import WhoWeare from './_components/home/who-weare'
-import WhatWeDo from './_components/home/what-wedo'
-import SellOptions from './_components/home/sell-options'
-import ReleaseSection from './_components/home/release-section'
-import TodaySection from './_components/home/today-section'
 import Testimonials from './_components/home/testimonials'
 import ContactSection from './_components/home/contact-section'
-import SecondaryBottomNavbarController from './_components/home/secondary-bottom-navbar-controller'
+import About from './_components/home/about-section'
+import Gallery from './_components/home/gallery'
+import WhyChooseUs from './_components/home/why-choose'
+import FromTheHouse from './_components/home/from-the-house'
+import Services from './_components/home/services'
 
 
 export default function Home() {
@@ -15,17 +13,16 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
-        <WhyMidas />
-        <WhoWeare />
-        <WhatWeDo />
-        <SellOptions />
-        <TodaySection />
-        <ReleaseSection />
+        <About />
+        <Services/>
+        <FromTheHouse/>
+        <WhyChooseUs/>
+        <Gallery/>
         <Testimonials />
-        <ContactSection mapQuery="Angamaly South,Angamaly, Kerala" />
+        <ContactSection 
+        mapQuery="D. Makeover Studio, opposite ladies planet, near Nesto Hypermarket, Perinthalmanna, Kerala 679322" 
+        />
       </main>
-      {/* Sticky secondary navbar controller (renders portal to body) */}
-      <SecondaryBottomNavbarController />
     </>
   )
 }
