@@ -134,7 +134,7 @@ const Gallery: React.FC = () => {
             <div className='flex flex-col lg:flex-row gap-6 mt-6'>
                 {/* Follow Us */}
                 <a
-                    href='https://www.instagram.com'
+                    href='https://www.instagram.com/d_dot_makeoverstudio/'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='aspect-square lg:w-[calc(33.333%-14px)] bg-black overflow-hidden shadow-lg relative flex-shrink-0 flex items-center justify-center group cursor-pointer transition-transform hover:scale-102'

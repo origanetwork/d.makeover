@@ -10,9 +10,9 @@ const FromTheHouse: React.FC = () => {
             <h1 className='font-felix-titling text-brand-green-800 tracking-wider text-4xl sm:text-4xl lg:text-5xl text-center mb-5'>FROM THE HOUSE OF DEZERT</h1>
             <p className='font-montserrat text-slate-500 text-2xl text-center leading-6'>Experience luxury and elegance across our premium locations</p>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mt-12 mb-5'>
+            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8 md:gap-4 lg:gap-8 mt-12 mb-5 md:mx-14'>
                 {/* Card 1 */}
-                <div className='relative rounded-xl shadow-lg overflow-hidden h-76'>
+                <div className='relative rounded-xl shadow-lg overflow-hidden md:h-90 lg:h-80 h-76'>
                     <Image
                         src='/landing-page/home/dezert-perinthalmanna.png'
                         alt='makeover perinthalmanna'
@@ -31,7 +31,7 @@ const FromTheHouse: React.FC = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className='relative rounded-xl shadow-lg overflow-hidden h-76'>
+                <div className='relative rounded-xl shadow-lg overflow-hidden md:h-90 lg:h-80 h-76'>
                     <Image
                         src='/landing-page/home/dezert-thirur.png'
                         alt='Dezert Location 2'
@@ -50,7 +50,7 @@ const FromTheHouse: React.FC = () => {
                 </div>
 
                 {/* Card 3 */}
-                <div className='relative rounded-xl shadow-lg overflow-hidden h-76'>
+                <div className='relative rounded-xl shadow-lg overflow-hidden md:h-90 lg:h-80 h-76'>
                     <Image
                         src='/landing-page/home/dezert-kottakal.png'
                         alt='Dezert Location 3'

@@ -123,9 +123,9 @@ const ContactSection: React.FC<Props> = ({
         }}
       />
 
-      <div className="relative z-20 mx-5 lg:mx-20">
+      <div className="relative z-20 mx-5 md:mx-12 lg:mx-20">
         {/* Card */}
-        <div className="rounded-3xl p-4 sm:p-5 shadow-[0_18px_40px_rgba(1,33,105,0.26)] px-6 md:px-16 lg:px-18 py-6 lg:py-6 bg-gradient-to-bl from-brand-green-500 via-brand-green-800 to-brand-green-800">
+        <div className="rounded-3xl p-4 sm:p-5 shadow-[0_18px_40px_rgba(1,33,105,0.26)] px-6 md:px-10 lg:px-18 py-6 lg:py-6 bg-gradient-to-bl from-brand-green-500 via-brand-green-800 to-brand-green-800">
           {/* Heading */}
           <div className="text-center mb-4 md:mb-10 lg:mb-12 ">
             <h2 className="font-felix-titling text-brand-gold-400 text-3xl sm:text-4xl md:text-5xl tracking-widest font-normal">
@@ -136,7 +136,7 @@ const ContactSection: React.FC<Props> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-10 lg:gap-24 lg:grid-cols-2 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 lg:gap-24 lg:grid-cols-2 items-stretch">
             {/* Left: Form */}
             <div className="rounded-2xl font-montserrat">
               <form onSubmit={onSubmit} className="space-y-2 lg:space-y-4 font-montserrat">
@@ -221,7 +221,7 @@ const ContactSection: React.FC<Props> = ({
             </div>
 
             {/* Right: Map */}
-            <div className="rounded-2xl bg-white/5 h-full flex min-h-[360px] sm:min-h-[400px] md:min-h-[480px]">
+            <div className="rounded-2xl bg-white/5 h-full flex min-h-[360px] sm:min-h-[400px] md:min-h-[330px] lg:min-h-[480px]">
               <div className="relative flex-1 overflow-hidden rounded-xl bg-white/10 ring-1 ring-white/15 shadow-[0_10px_25px_rgba(1,33,105,0.25)]">
                 <ClientOnly
                   fallback={
@@ -252,8 +252,8 @@ const ContactSection: React.FC<Props> = ({
           </div>
 
           {/* Bottom section */}
-          <div className="mt-4 lg:mt-12 mb-4">
-            <div className="flex flex-col gap-4 md:flex-row lg:flex-row md:px-5 lg:px-6 lg:justify-between md:justify-between text-white">
+          <div className="mt-4 md:mt-10 lg:mt-12 mb-4">
+            <div className="flex flex-col gap-7 md:flex-row lg:flex-row md:px-0 lg:px-6 lg:justify-between md:justify-between items-start text-white">
               {/* Location */}
               <a
                 href={mapsUrl}
@@ -261,40 +261,45 @@ const ContactSection: React.FC<Props> = ({
                 rel="noopener noreferrer"
                 className="flex flex-row gap-2 items-start hover:opacity-80 transition cursor-pointer"
               >
-                <IoLocationOutline className="w-14 h-14 lg:w-7 lg:h-7" />
+                <IoLocationOutline className="w-14 h-14 md:w-8 md:h-8 lg:w-7 lg:h-7" />
                 <div className="flex flex-col text-md lg:text-xl font-montserrat font-semibold">
-                  <span className="hidden lg:block">
+                  <span className="hidden lg:block md:hidden">
                     Kozhikkod - Palakkad Bypass Rd, near<br />
                     Nesto Hypermarket, Perinthalmanna
                   </span>
-                  <span className="lg:hidden">
+                  <span className="lg:hidden md:hidden">
                     Kozhikkod - Palakkad Bypass Rd, near Nesto Hypermarket, Perinthalmanna
+                  </span>
+                  <span className="hidden lg:hidden md:block">
+                    Kozhikkod - Palakkad <br />
+                    Bypass Rd, near Nesto Hypermarket, <br />
+                    Perinthalmanna
                   </span>
                 </div>
               </a>
 
               {/* contact */}
-              <div className="flex flex-col gap-2 text-md lg:text-xl font-montserrat font-semibold">
+              <div className="flex flex-col gap-2 text-md lg:text-xl font-montserrat font-semibold md:min-w-0 md:flex-shrink-0">
                 <a
                   href={telUrl}
-                  className="flex flex-row gap-2 hover:opacity-80 transition cursor-pointer"
+                  className="flex flex-row gap-2 hover:opacity-80 transition cursor-pointer items-center whitespace-nowrap"
                 >
-                  <Phone width={24} height={24} />
-                  <span>{phoneNumber}</span>
+                  <Phone width={24} height={24} className="flex-shrink-0" />
+                  <span className="truncate">{phoneNumber}</span>
                 </a>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-row gap-2 hover:opacity-80 transition cursor-pointer"
+                  className="flex flex-row gap-2 hover:opacity-80 transition cursor-pointer items-center whitespace-nowrap"
                 >
-                  <FaWhatsapp size={24} />
-                  <span>{whatsappNumber}</span>
+                  <FaWhatsapp size={24} className="flex-shrink-0" />
+                  <span className="truncate">{whatsappNumber}</span>
                 </a>
               </div>
 
               {/* Social */}
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row gap-2 items-center md:ml-10">
                 <a href="https://www.facebook.com/people/D-Dot-Makeover-Studio/61577050333171/" aria-label="Facebook" className="hover:opacity-80 transition">
                   <FaFacebook size={28} fill='currentColor' />
                 </a>

@@ -8,7 +8,7 @@ const About: React.FC = () => {
     const imageRef = useRef<HTMLDivElement | null>(null)
 
     return (
-        <section id="about" className="px-6 md:px-12 lg:px-24 bg-white pt-6 md:pt-18 kg:pt-24">
+        <section id="about" className="px-6 md:px-12 lg:px-24 bg-white pt-6 md:pt-8 lg:pt-24">
             <div className="flex flex-col-reverse lg:flex-row lg:justify-between items-center lg:items-start gap-12 max-w-7xl mx-auto">
                 {/* Image Container - Fixed dimensions */}
                 <div

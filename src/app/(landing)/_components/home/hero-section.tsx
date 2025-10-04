@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
   const imageRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <section id="home" className="relative isolate overflow-hidden h-[60vh] sm:h-[55vh] md:h-[80vh] lg:h-[85vh] xl:h-[90vh]">
+    <section id="home" className="relative isolate overflow-hidden h-[60vh] sm:h-[55vh] md:h-[60vh] lg:h-[85vh] xl:h-[90vh]">
       {/* Background image using next/image (fade-in on load) */}
       <div
         className="absolute inset-0 -z-20 transition-opacity duration-700 ease-out"
@@ -47,17 +47,18 @@ const HeroSection: React.FC = () => {
       </div>
       {/* Content */}
       <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 sm:py-28 md:py-68">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 md:py-50 lg:py-68">
 
           <div
             ref={contentRef}
             className="md:col-span-2"
             style={{ willChange: 'transform, opacity' }}
           >
-            <h1 className="hero-title text-white text-3xl sm:text-4xl md:text-3xl lg:text-5xl font-normal tracking-wider font-felix-titling px-5 sm:px-0">
-              <span className="block sm:whitespace-nowrap">REDEFINING STYLE, RENEWING CONFIDENCE</span>
+            <h1 className="hero-title text-white text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-normal tracking-wider font-felix-titling px-5 sm:px-0">
+              <span className="block md:inline">REDEFINING STYLE,</span>
+              <span className="block md:inline"> RENEWING CONFIDENCE</span>
             </h1>
-            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
+            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 md:mx-0 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
           </div>
         </div>
       </div>

@@ -78,7 +78,7 @@ const Services: React.FC = () => {
     const currentServices = activeTab === 'women' ? womenServices : menServices
 
     return (
-        <section id="services" className='bg-white px-4 sm:px-8 lg:px-16 py-8 md:pb-8 lg:pb-10'>
+        <section id="services" className='bg-white px-4 sm:px-8 lg:px-16 py-8 md:py-14 lg:pb-10'>
             <div className="bg-brand-gold py-8 px-6 sm:px-12 lg:px-20 rounded-4xl">
                 <div className="flex items-center gap-2 lg:mb-6 md:mb-4 mb-3">
                     <h1 className="font-montserrat text-xl md:text-xl lg:text-2xl font-bold text-black">OUR </h1>

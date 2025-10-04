@@ -24,14 +24,14 @@ const DATA: Testimonial[] = [
     name: 'Rahul M',
     role: 'Model',
     quote:
-      "As a jewelry shop owner, a reliable partner for gold buying and selling is crucial. With Midas, we've experienced secure transactions, instant payments, and consistent fair valuation.",
+      "The makeup artists at D. Makeover Studio are truly talented! They understood exactly what I needed for my portfolio shoot and delivered beyond my expectations. My skin felt amazing throughout.",
     avatar: '/landing-page/home/person-2.jpeg',
   },
   {
     name: 'Devika S',
     role: 'Serial actress',
     quote:
-      'Professional, honest, and fast. The live-rate valuation and clarity in every step make them our preferred partner.',
+      'For my daily shoots and special episodes, D. Makeover Studio has been my go-to place. Their attention to detail and ability to create different looks is exceptional. Highly recommended!',
     avatar: '/landing-page/home/person-3.jpeg',
   },
 ]
@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
   }
 
   return (
-    <section className="relative bg-gradient-to-r from-brand-green-800 via-brand-green-700 to-brand-green-600 py-12 sm:py-16" id="testimonials">
+    <section className="relative bg-gradient-to-r from-brand-green-800 via-brand-green-700 to-brand-green-600 py-12 md:py-5 sm:py-16" id="testimonials">
       <div className="mx-auto max-w-7xl">
         {/* Banner container */}
         <div
@@ -57,7 +57,7 @@ const Testimonials: React.FC = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-stretch md:min-h-[350px] ">
             {/* Left rail: big quotes, title, controls */}
-            <div className="text-white/95 relative flex flex-col items-start justify-center h-full">
+            <div className="text-white/95 relative flex flex-col items-start justify-center h-full md:pl-6 lg:pl-0">
               {/* Big quote mark (positioned absolutely so it doesn't affect layout) */}
               <div aria-hidden className="pointer-events-none absolute text-gold-600 -top-10 left-5 md:-top-2 md:-left-1 lg:-top-4 w-24 h-24 sm:w-28 sm:h-28 lg:w-42 lg:h-42">
                 <svg width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor" className="">
