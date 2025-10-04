@@ -7,7 +7,7 @@ import 'swiper/css';
 const felixTitling = localFont({
   src: [
     {
-      path: '../../public/fonts/FelixTitling.TTF',
+      path: '../../public/fonts/FelixTitling.ttf',
       weight: '400',
     },
   ],
