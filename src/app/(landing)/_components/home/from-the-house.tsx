@@ -25,7 +25,7 @@ const FromTheHouse: React.FC = () => {
                         <h3 className='font-montserrat font-semibold text-2xl'>Perinthalmanna</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
-                            <p className='font-montserrat text-xl'>Kozhikod palakked Bypass</p>
+                            <p className='font-montserrat text-xl'>Ooty Rd Valiyangadi</p>
                         </span>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ const FromTheHouse: React.FC = () => {
                         <h3 className='font-montserrat font-semibold text-2xl'>Thirur</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
-                            <p className='font-montserrat text-xl'>Kozhikod palakked Bypass</p>
+                            <p className='font-montserrat text-xl'>Edappal - Thirur Rd</p>
                         </span>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ const FromTheHouse: React.FC = () => {
                         <h3 className='font-montserrat font-semibold text-2xl'>Kottakal</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
-                            <p className='font-montserrat text-xl'>Kozhikod palakked Bypass</p>
+                            <p className='font-montserrat text-xl'>NH 66 Parambilangadi</p>
                         </span>
                     </div>
                 </div>

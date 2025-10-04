@@ -383,7 +383,7 @@ const MenuIcon: React.FC = () => {
             <div className="flex items-center space-x-4">
               {/* Instagram Icon */}
               <a
-                href="https://www.instagram.com/dezertbeautysalon_perinthalmna/"
+                href="https://www.instagram.com/d_dot_makeoverstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -395,7 +395,8 @@ const MenuIcon: React.FC = () => {
 
               {/* WhatsApp Icon */}
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/9325700200
+"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -406,7 +407,7 @@ const MenuIcon: React.FC = () => {
               </a>
               
               {/* Email */}
-              <span className="text-sm text-gray-600">info@ddot.com</span>
+              <span className="text-sm text-gray-600">ddotmakeoverstudio@gmail.com</span>
             </div>
           </div>
         </div>

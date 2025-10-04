@@ -37,7 +37,7 @@ const WhyChooseUs: React.FC = () => {
     // Static render for SSR - no interactive elements
     if (!isClient) {
         return (
-            <section className='bg-white px-4 sm:px-8 lg:px-28 py-6 md:py-8 lg:py-10'>
+            <section id='why-choose' className='bg-white px-4 sm:px-8 lg:px-28 py-6 md:py-8 lg:py-10'>
                 <h1 className='font-felix-titling text-brand-green-800 tracking-wider text-4xl sm:text-4xl lg:text-5xl text-center mb-8 sm:mb-10'>WHY CHOOSE US</h1>
 
                 {/* Static grid for all screen sizes during SSR */}
@@ -69,7 +69,7 @@ const WhyChooseUs: React.FC = () => {
     }
 
     return (
-        <section className='bg-white px-4 sm:px-8 lg:px-28 py-6 md:py-8 lg:py-10'>
+        <section id='why-choose' className='bg-white px-4 sm:px-8 lg:px-28 py-6 md:py-8 lg:py-10'>
             <h1 className='font-felix-titling text-brand-green-800 tracking-wider text-4xl sm:text-4xl lg:text-5xl text-center mb-8 sm:mb-10'>WHY CHOOSE US</h1>
 
             {/* Desktop Grid - 4 columns */}

@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
             <h1 className="hero-title text-white text-3xl sm:text-4xl md:text-3xl lg:text-5xl font-normal tracking-wider font-felix-titling px-5 sm:px-0">
               <span className="block sm:whitespace-nowrap">REDEFINING STYLE, RENEWING CONFIDENCE</span>
             </h1>
-            <h2 className='test-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
+            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
           </div>
         </div>
       </div>

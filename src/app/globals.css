@@ -14,7 +14,7 @@
   --color-primary-gold: #E6C493;
 
   /* Secondary tones */
-  --color-secondary-gold: #E6C493;
+  --color-secondary-gold: #d4ad74;
   --color-secondary-green: #0A9BAE;
   --color-secondary-dark-gold: #806D52;
 
@@ -50,9 +50,9 @@
   /* Golds */
   --color-brand-gold: var(--color-primary-gold);
   --color-brand-gold-500: var(--color-primary-gold);
+  --color-brand-gold-400: var(--color-secondary-gold);
+  --color-brand-gold-600: var(--color-secondary-dark-gold);
   --color-gold-900: var(--color-secondary-dark-gold);
-  --color-gold-600: var(--color-secondary-gold);
-  --color-gold-400: var(--color-accent-golden);
   --color-gold-300: var(--color-accent-dark-golden);
 
   /* Accents */

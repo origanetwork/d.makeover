@@ -24,10 +24,10 @@ const Footer: React.FC = () => {
             </p>
             <div className="mt-6 flex items-center gap-4 text-white/90">
               {/* Social icons */}
-              <a href="#" aria-label="Facebook" className="hover:opacity-80 transition">
+              <a href="https://www.facebook.com/people/D-Dot-Makeover-Studio/61577050333171/" aria-label="Facebook" className="hover:opacity-80 transition">
                 <Facebook width={22} height={22} fill='currentColor' />
               </a>
-              <a href="#" aria-label="Instagram" className="hover:opacity-80 transition">
+              <a href="https://www.instagram.com/d_dot_makeoverstudio/" aria-label="Instagram" className="hover:opacity-80 transition">
                 <Instagram width={22} height={22} />
               </a>
             </div>
@@ -40,8 +40,8 @@ const Footer: React.FC = () => {
             <div className="mt-10 md:mt-14">
               <h3 className="font-medium text-xl tracking-wide mb-4">About Us</h3>
               <ul className="space-y-3 text-slate-200">
-                <li><Link href="/about#why-choose-us" prefetch className="hover:text-white transition">Why Choose Us</Link></li>
-                <li><Link href="/about#about-overview" prefetch className="hover:text-white transition">Contact Us</Link></li>
+                <li><Link href="/#why-choose" prefetch className="hover:text-white transition">Why Choose Us</Link></li>
+                <li><Link href="/#contact" prefetch className="hover:text-white transition">Contact Us</Link></li>
                 <li><Link href="/#testimonials" prefetch className="hover:text-white transition">Customer Reviews</Link></li>
               </ul>
             </div>
@@ -50,10 +50,10 @@ const Footer: React.FC = () => {
             <div className="mt-10 md:mt-14">
               <h3 className="font-medium text-xl tracking-wide mb-4">Services</h3>
               <ul className="space-y-3 text-slate-200">
-                <li><Link href="/services/sell-gold" prefetch className="hover:text-white transition">Bridel Makeover</Link></li>
-                <li><Link href="/services/buy-gold" prefetch className="hover:text-white transition">Hair Stylist</Link></li>
-                <li><Link href="/services/release-gold" prefetch className="hover:text-white transition">Makeup Artistry</Link></li>
-                <li><Link href="/services" prefetch className="hover:text-white transition">Nail Care</Link></li>
+                <li><Link href="/#services" prefetch className="hover:text-white transition">Bridal Makeover</Link></li>
+                <li><Link href="/#services" prefetch className="hover:text-white transition">Hair Stylist</Link></li>
+                <li><Link href="/#services" prefetch className="hover:text-white transition">Makeup Artistry</Link></li>
+                <li><Link href="/#services" prefetch className="hover:text-white transition">Nail Care</Link></li>
               </ul>
             </div>
 
@@ -62,8 +62,8 @@ const Footer: React.FC = () => {
               <h3 className="font-medium text-xl tracking-wide mb-4">Quick Links</h3>
               <ul className="space-y-3 text-slate-200">
                 <li><Link href="/" prefetch className="hover:text-white transition">Home</Link></li>
-                <li><Link href="/blogs" prefetch className="hover:text-white transition">Blog</Link></li>
-                <li><Link href="/#contact" prefetch className="hover:text-white transition">FAQs</Link></li>
+                <li><Link href="/" prefetch className="hover:text-white transition">Blog</Link></li>
+                <li><Link href="/" prefetch className="hover:text-white transition">FAQs</Link></li>
               </ul>
             </div>
 
