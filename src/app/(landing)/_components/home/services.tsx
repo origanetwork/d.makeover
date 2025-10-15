@@ -120,11 +120,11 @@ const Services: React.FC = () => {
                 </div>
 
                 {/* Desktop Grid - 4 columns */}
-                <div className='hidden lg:grid lg:grid-cols-4 lg:gap-12 mb-8'>
+                <div className='hidden lg:grid lg:grid-cols-4 lg:gap-10 mb-8'>
                     {currentServices.map((service) => {
                         const IconComponent = service.icon
                         return (
-                            <div key={service.id} className='bg-white rounded-2xl shadow-lg p-6 overflow-hidden'>
+                            <div key={service.id} className='bg-white rounded-2xl shadow-lg p-6 overflow-hidden flex flex-col'>
                                 <div className='relative h-48'>
                                     <Image
                                         src={service.image}
@@ -133,7 +133,7 @@ const Services: React.FC = () => {
                                         className='object-cover rounded-xl'
                                     />
                                 </div>
-                                <div className='pt-5'>
+                                <div className='pt-5 flex flex-col flex-grow'>
                                     <div className='flex items-center gap-3 mb-4'>
                                         <div className='p-3 bg-gradient-to-r from-brand-green-800 to-brand-green-500 text-white rounded-xl'>
                                             <IconComponent size={24} />
@@ -142,9 +142,18 @@ const Services: React.FC = () => {
                                             {service.title}
                                         </h3>
                                     </div>
-                                    <p className='font-montserrat text-md text-gray-600'>
+                                    <p className='font-montserrat text-md text-gray-600 mb-4 flex-grow'>
                                         {service.description}
                                     </p>
+                                    <a
+                                        href={`/services?tab=${activeTab}`}
+                                        className='inline-flex items-center justify-center gap-1 text-brand-green-800 font-montserrat font-semibold hover:gap-2 transition-all text-sm'
+                                    >
+                                        Know More
+                                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         )
@@ -156,7 +165,7 @@ const Services: React.FC = () => {
                     {currentServices.map((service) => {
                         const IconComponent = service.icon
                         return (
-                            <div key={service.id} className='bg-white rounded-2xl p-5 shadow-lg overflow-hidden'>
+                            <div key={service.id} className='bg-white rounded-2xl p-5 shadow-lg overflow-hidden flex flex-col'>
                                 <div className='relative h-48'>
                                     <Image
                                         src={service.image}
@@ -165,7 +174,7 @@ const Services: React.FC = () => {
                                         className='object-cover rounded-xl'
                                     />
                                 </div>
-                                <div className='pt-4'>
+                                <div className='pt-4 flex flex-col flex-grow'>
                                     <div className='flex items-center gap-3 mb-4'>
                                         <div className='p-3 bg-gradient-to-r from-brand-green-800 to-brand-green-500 text-white rounded-lg'>
                                             <IconComponent size={24} />
@@ -174,9 +183,18 @@ const Services: React.FC = () => {
                                             {service.title}
                                         </h3>
                                     </div>
-                                    <p className='font-montserrat text-md text-gray-600'>
+                                    <p className='font-montserrat text-md text-gray-600 mb-4 flex-grow'>
                                         {service.description}
                                     </p>
+                                    <a
+                                        href={`/services?tab=${activeTab}`}
+                                        className='inline-flex items-center justify-center gap-1 text-brand-green-800 font-montserrat font-semibold hover:gap-2 transition-all text-sm'
+                                    >
+                                        Know More
+                                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         )
@@ -188,7 +206,7 @@ const Services: React.FC = () => {
                     {currentServices.map((service) => {
                         const IconComponent = service.icon
                         return (
-                            <div key={service.id} className='bg-white rounded-2xl p-5 shadow-lg overflow-hidden'>
+                            <div key={service.id} className='bg-white rounded-2xl p-5 shadow-lg overflow-hidden flex flex-col'>
                                 <div className='relative h-48'>
                                     <Image
                                         src={service.image}
@@ -197,7 +215,7 @@ const Services: React.FC = () => {
                                         className='object-cover rounded-xl'
                                     />
                                 </div>
-                                <div className='pt-4'>
+                                <div className='pt-4 flex flex-col flex-grow'>
                                     <div className='flex items-center gap-3 mb-4'>
                                         <div className='p-3 bg-gradient-to-r from-brand-green-800 to-brand-green-500 text-white rounded-lg'>
                                             <IconComponent size={24} />
@@ -206,9 +224,18 @@ const Services: React.FC = () => {
                                             {service.title}
                                         </h3>
                                     </div>
-                                    <p className='font-montserrat text-md text-gray-600'>
+                                    <p className='font-montserrat text-md text-gray-600 mb-4 flex-grow'>
                                         {service.description}
                                     </p>
+                                    <a
+                                        href={`/services?tab=${activeTab}`}
+                                        className='inline-flex items-center justify-center gap-1 text-brand-green-800 font-montserrat font-semibold hover:gap-2 transition-all text-sm'
+                                    >
+                                        Know More
+                                        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         )
