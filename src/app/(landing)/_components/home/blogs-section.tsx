@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Calendar, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface BlogPost {
     id: number
@@ -101,7 +102,7 @@ const BlogsSection: React.FC = () => {
 
                 {/* View All Blogs Button */}
                 <div className='flex justify-center'>
-                    <a
+                    <Link
                         href='/blogs'
                         className='inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-12 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all font-montserrat'
                     >
@@ -109,7 +110,7 @@ const BlogsSection: React.FC = () => {
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3">
                             <path d="M5 12h14M13 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

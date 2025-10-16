@@ -17,26 +17,26 @@ const ReelsSection: React.FC = () => {
   const reels: Reel[] = [
     {
       id: 1,
-      reelUrl: 'https://www.instagram.com/reel/DPtZFuOk0Xg/',
-      thumbnail: '/landing-page/home/women-bridal.jpg',
-      title: 'Bridal Transformation'
-    },
-    {
-      id: 2,
       reelUrl: 'https://www.instagram.com/reel/DPoHPZAEjlk/',
-      thumbnail: '/landing-page/home/women-hairstyle.jpg',
+      thumbnail: '/landing-page/home/thumbnail-2.png',
       title: 'Hair Styling Magic'
     },
     {
+      id: 2,
+      reelUrl: 'https://www.instagram.com/reel/DPtZFuOk0Xg/',
+      thumbnail: '/landing-page/home/thumbnail-1.png',
+      title: 'Bridal Transformation'
+    },
+    {
       id: 3,
-      reelUrl: 'https://www.instagram.com/reel/DPlocrmEll3/',
-      thumbnail: '/landing-page/home/women-makeup.jpg',
+      reelUrl: 'https://www.instagram.com/reel/DPLelFXEu0A/',
+      thumbnail: '/landing-page/home/thumbnail-3.png',
       title: 'Makeup Artistry'
     },
     {
       id: 4,
-      reelUrl: 'https://www.instagram.com/reel/DPtw9ZGkk3K/',
-      thumbnail: '/landing-page/home/men-haircut.jpg',
+      reelUrl: 'https://www.instagram.com/reel/DPlocrmEll3/',
+      thumbnail: '/landing-page/home/thumbnail-4.png',
       title: "Men's Grooming"
     }
   ]
@@ -45,7 +45,7 @@ const ReelsSection: React.FC = () => {
   const prevSlide = () => setCurrentIndex((prev) => (prev === 0 ? reels.length - 1 : prev - 1))
 
   return (
-    <section className="bg-white px-4 sm:px-8 lg:px-16 py-12 md:py-16">
+    <section className="bg-white px-4 sm:px-8 lg:px-16 py-12 md:py-10">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -73,11 +73,11 @@ const ReelsSection: React.FC = () => {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all" />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white/90 p-3 rounded-full">
+                {/* <div className="bg-white/90 p-3 rounded-full">
                   <Instagram size={28} className="text-brand-green-800" />
-                </div>
+                </div> */}
               </div>
             </a>
           ))}
@@ -99,11 +99,11 @@ const ReelsSection: React.FC = () => {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all" />
+              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white/90 p-3 rounded-full">
+                {/* <div className="bg-white/90 p-3 rounded-full">
                   <Instagram size={28} className="text-brand-green-800" />
-                </div>
+                </div> */}
               </div>
             </a>
           ))}
@@ -130,11 +130,11 @@ const ReelsSection: React.FC = () => {
                     fill
                     className="object-cover transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="absolute inset-0 bg-black/5" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/90 p-3 rounded-full">
+                    {/* <div className="bg-white/90 p-3 rounded-full">
                       <Instagram size={28} className="text-brand-green-800" />
-                    </div>
+                    </div> */}
                   </div>
                 </a>
               ))}
@@ -163,9 +163,8 @@ const ReelsSection: React.FC = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-brand-green-800 w-8' : 'bg-gray-300'
-                }`}
+                className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? 'bg-brand-green-800 w-8' : 'bg-gray-300'
+                  }`}
               />
             ))}
           </div>
