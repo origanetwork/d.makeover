@@ -47,7 +47,7 @@ const BlogsSection: React.FC = () => {
     ]
 
     return (
-        <section className='bg-white px-4 sm:px-8 lg:px-16 pb-10 md:pb-14 lg:pb-18 pt-10 md:pt-12 lg:pt-5'>
+        <section className='bg-white px-4 sm:px-8 lg:px-16 pb-14 md:pb-14 lg:pb-18 pt-4 md:pt-12 lg:pt-5'>
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12">
