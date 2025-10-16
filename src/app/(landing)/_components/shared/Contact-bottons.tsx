@@ -11,7 +11,7 @@ const ContactButtons: React.FC = () => {
     <>
       {/* Desktop / Tablet: fixed on right center */}
       <div className="pointer-events-auto hidden sm:flex flex-col gap-3 fixed right-4 md:right-6 bottom-10 z-50">
-        <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} aria-label="Call Us" className="h-12 w-12 rounded-full bg-gradient-to-b from-[#2C71FF] to-[#0F4FD6] flex items-center justify-center shadow-lg hover:brightness-110 transition">
+        <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} aria-label="Call Us" className="h-12 w-12 rounded-full bg-gradient-to-b from-brand-green-600 to-brand-green-900 flex items-center justify-center shadow-lg hover:brightness-110 transition">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff" aria-hidden>
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.42 19.42 0 01-6-6A19.8 19.8 0 012.08 4.2 2 2 0 014.06 2h3a2 2 0 012 1.72c.12.9.3 1.78.55 2.63a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.85.25 1.73.43 2.63.55A2 2 0 0122 16.92z"/>
           </svg>
@@ -23,7 +23,7 @@ const ContactButtons: React.FC = () => {
 
       {/* Mobile: bottom-right inside viewport */}
       <div className="sm:hidden pointer-events-auto fixed right-4 bottom-29 flex flex-col gap-3 z-50">
-        <a href="#" aria-label="Call Us" className="h-11 w-11 rounded-full bg-gradient-to-b from-[#2C71FF] to-[#0F4FD6] flex items-center justify-center shadow-lg">
+        <a href="#" aria-label="Call Us" className="h-11 w-11 rounded-full bg-gradient-to-b from-brand-green-600 to-brand-green-900 flex items-center justify-center shadow-lg">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff" aria-hidden>
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.42 19.42 0 01-6-6A19.8 19.8 0 012.08 4.2 2 2 0 014.06 2h3a2 2 0 012 1.72c.12.9.3 1.78.55 2.63a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.85.25 1.73.43 2.63.55A2 2 0 0122 16.92z"/>
           </svg>

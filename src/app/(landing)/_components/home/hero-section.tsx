@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
       {/* Hero illustration pinned bottom-right of the section */}
       <div
         ref={imageRef}
-        className="pointer-events-none absolute -bottom-4 -right-0 z-0 h-[330px] sm:h-[390px] md:h-[490px] w-[330px] sm:w-[390px] md:w-[490px]"
+        className="pointer-events-none absolute -bottom-4 -right-12 md:-right-0 lg:-right-0 z-0 h-[330px] sm:h-[390px] md:h-[490px] w-[330px] sm:w-[390px] md:w-[490px]"
         style={{ willChange: 'transform, opacity' }}
       >
         <Image
@@ -91,8 +91,8 @@ const HeroSection: React.FC = () => {
         />
       </div>
       {/* Content */}
-      <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[90vh] py-30 md:py-50 lg:py-68">
+      <div className="relative z-10 mx-auto  md:max-w-2xl lg:max-w-7xl mt-6 md:mt-0 lg:mt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start min-h-[90vh] py-30 md:py-50 lg:py-68">
 
           <div
             ref={contentRef}
@@ -103,7 +103,7 @@ const HeroSection: React.FC = () => {
               <span className="block md:inline">{currentContent.title[0]}</span>
               <span className="block md:inline"> {currentContent.title[1]}</span>
             </h1>
-            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 md:mx-0 lg:mx-0'>{currentContent.subtitle}</h2>
+            <h2 className='w-1/2 lg:w-full md:w-full text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 md:mx-0 lg:mx-0'>{currentContent.subtitle}</h2>
           </div>
         </div>
       </div>

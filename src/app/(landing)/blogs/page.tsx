@@ -140,14 +140,14 @@ export default function BlogsPage() {
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             OUR BLOGS
                         </h1>
-                        <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Beauty tips, trends, and expert advice from D. Makeover Studio
                         </p>
                     </div>
@@ -155,7 +155,7 @@ export default function BlogsPage() {
             </section>
 
             {/* Search and Filter Section */}
-            <section className="px-6 md:px-12 lg:px-24 py-12">
+            <section className="px-6 md:px-12 lg:px-24 py-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Search Bar */}
                     <div className="mb-8">
@@ -246,7 +246,7 @@ export default function BlogsPage() {
             </section>
 
             {/* Newsletter Section */}
-            <section className="px-6 md:px-12 lg:px-24 pb-20">
+            <section className="px-6 md:px-12 lg:px-24 pb-16">
                 <div className="max-w-4xl mx-auto bg-gradient-to-r from-brand-green-800 to-brand-green-500 rounded-3xl p-12 text-center">
                     <h2 className="text-3xl md:text-4xl font-felix-titling text-white tracking-wider mb-4">
                         STAY UPDATED
@@ -262,7 +262,7 @@ export default function BlogsPage() {
                             onChange={(e) => setSubscribeEmail(e.target.value)}
                             disabled={isSubscribing}
                             required
-                            className="flex-1 px-6 py-3 rounded-lg font-montserrat focus:outline-none focus:ring-2 focus:ring-white/50 disabled:opacity-50 text-white"
+                            className="flex-1 px-6 py-3 rounded-lg font-montserrat focus:outline-none ring-2 ring-white/50 focus:ring-brand-gold-500 disabled:opacity-50 text-white"
                         />
                         <button
                             type="submit"

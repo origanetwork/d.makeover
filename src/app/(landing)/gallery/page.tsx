@@ -90,7 +90,7 @@ export default function GalleryPage() {
         }
     ]
 
-    const categories = ['All', 'Bridal', 'Hair Styling', 'Makeup', 'Nail Art', 'Men\'s Grooming', 'Facial', 'Studio']
+    const categories = ['All', 'Bridal', 'Makeup', 'Nail Art', 'Facial', 'Studio', 'Hair Styling', 'Men\'s Grooming',]
 
     const filteredImages = selectedCategory === 'All'
         ? galleryImages
@@ -99,14 +99,14 @@ export default function GalleryPage() {
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             GALLERY
                         </h1>
-                        <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Explore our work and get inspired for your next makeover
                         </p>
                     </div>
@@ -114,7 +114,7 @@ export default function GalleryPage() {
             </section>
 
             {/* Gallery Content */}
-            <section className="px-6 md:px-12 lg:px-24 py-16 md:py-20">
+            <section className="px-6 md:px-12 lg:px-24 py-12 md:py-16">
                 <div className="max-w-7xl mx-auto">
                     {/* Category Filter */}
                     <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -160,7 +160,7 @@ export default function GalleryPage() {
                     </div>
 
                     {/* Instagram Call to Action */}
-                    <div className="bg-gradient-to-r from-brand-green-800 to-brand-green-500 rounded-3xl p-12 text-center">
+                    <div className="bg-gradient-to-r from-brand-green-800 to-brand-green-500 rounded-3xl p-8 md:p-10 lg:p-12 text-center">
                         <div className="max-w-2xl mx-auto">
                             <div className="flex justify-center mb-6">
                                 <div className="bg-white rounded-full p-4">
@@ -177,7 +177,7 @@ export default function GalleryPage() {
                                 href="https://www.instagram.com/d_dot_makeoverstudio/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-12 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all"
+                                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-8 md:px-10 lg:px-12 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all"
                             >
                                 <Instagram size={20} />
                                 <span>@d_dot_makeoverstudio</span>

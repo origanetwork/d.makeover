@@ -8,14 +8,14 @@ export default function AboutPage() {
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             ABOUT US
                         </h1>
-                        <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Professional beauty and grooming services for everyone, designed to enhance your natural confidence.
                         </p>
                     </div>
@@ -23,7 +23,7 @@ export default function AboutPage() {
             </section>
 
             {/* Main Content */}
-            <section className="px-6 md:px-12 lg:px-24 py-16 md:py-20 lg:py-28 max-w-7xl mx-auto">
+            <section className="px-6 md:px-12 lg:px-24 py-12 md:py-14 lg:py-20 max-w-7xl mx-auto">
                 {/* Introduction */}
                 <div className="mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-brand-green-800 uppercase font-felix-titling tracking-wide mb-8">
@@ -69,11 +69,11 @@ export default function AboutPage() {
                 </div>
 
                 {/* Our Values */}
-                <div className="mb-16 md:mb-20">
-                    <h2 className="text-3xl md:text-4xl font-normal text-brand-green-800 uppercase font-felix-titling tracking-wide mb-10 text-center">
+                <div className="mb-8 md:mb-16">
+                    <h2 className="text-3xl md:text-4xl font-normal text-brand-green-800 uppercase font-felix-titling tracking-wide mb-6 md:mb-10 text-center">
                         Our Values
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
                         <div className="text-center p-6">
                             <div className="w-16 h-16 bg-gradient-to-r from-brand-green-800 to-brand-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

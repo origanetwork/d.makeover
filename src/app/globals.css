@@ -140,3 +140,44 @@ body {
     animation: none !important;
   }
 }
+
+/* Custom scrollbar for horizontal scroll containers */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #036370;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #044048;
+}
+
+.scrollbar-track-gray-200::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+.scrollbar-thumb-brand-green-800::-webkit-scrollbar-thumb {
+  background: #044048;
+}
+
+/* Hide scrollbar completely while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

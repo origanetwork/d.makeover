@@ -29,7 +29,7 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 max-w-xl pt-6 md:pt-8 lg:pt-10">
+                <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 max-w-xl pt-2 md:pt-8 lg:pt-10">
                     <h2 className="text-4xl md:text-5xl font-normal text-brand-green-800 uppercase font-felix-titling tracking-wide">
                         ABOUT US
                     </h2>

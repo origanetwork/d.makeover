@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight, Instagram } from 'lucide-react'
+import React from 'react'
+import { Instagram } from 'lucide-react'
 import Image from 'next/image'
 
 interface Reel {
@@ -12,8 +12,6 @@ interface Reel {
 }
 
 const ReelsSection: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
   const reels: Reel[] = [
     {
       id: 1,
@@ -41,23 +39,20 @@ const ReelsSection: React.FC = () => {
     }
   ]
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev === reels.length - 1 ? 0 : prev + 1))
-  const prevSlide = () => setCurrentIndex((prev) => (prev === 0 ? reels.length - 1 : prev - 1))
-
   return (
-    <section className="bg-white px-4 sm:px-8 lg:px-16 py-12 md:py-10">
+    <section className="bg-white px-4 sm:px-8 lg:px-16 py-10 md:py-10 lg:pt-18">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-6 md:mb-8 lg:mb-10">
           <h2 className="font-felix-titling text-brand-green-800 tracking-wider text-3xl sm:text-4xl lg:text-5xl mb-4">
             WATCH OUR TRANSFORMATIONS
           </h2>
-          <p className="font-montserrat text-gray-600 text-lg">
+          <p className="font-montserrat text-gray-600 text-md md:text-md lg:text-lg">
             See the magic happen in our latest reels
           </p>
         </div>
 
-        {/* Desktop Grid */}
+        {/* Desktop Grid - 4 reels in a row */}
         <div className="hidden lg:grid lg:grid-cols-4 gap-6 mb-6">
           {reels.map((reel) => (
             <a
@@ -65,13 +60,13 @@ const ReelsSection: React.FC = () => {
               href={reel.reelUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-[9/16] overflow-hidden rounded-2xl shadow-xl"
+              className="group relative aspect-[9/16] overflow-hidden rounded-2xl shadow-xl transition-transform duration-300 hover:scale-105"
             >
               <Image
                 src={reel.thumbnail}
                 alt={reel.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -83,89 +78,58 @@ const ReelsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Tablet Grid */}
-        <div className="hidden md:grid lg:hidden md:grid-cols-2 gap-6 mb-6">
-          {reels.map((reel) => (
-            <a
-              key={reel.id}
-              href={reel.reelUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative aspect-[9/16] overflow-hidden rounded-2xl shadow-xl"
-            >
-              <Image
-                src={reel.thumbnail}
-                alt={reel.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                {/* <div className="bg-white/90 p-3 rounded-full">
-                  <Instagram size={28} className="text-brand-green-800" />
-                </div> */}
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* Mobile Carousel */}
-        <div className="md:hidden relative">
-          <div className="overflow-hidden rounded-2xl">
-            <div
-              className="flex transition-transform duration-300 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {reels.map((reel) => (
-                <a
-                  key={reel.id}
-                  href={reel.reelUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex-shrink-0 relative aspect-[9/16] overflow-hidden rounded-2xl"
-                >
-                  <Image
-                    src={reel.thumbnail}
-                    alt={reel.title}
-                    fill
-                    className="object-cover transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/5" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* <div className="bg-white/90 p-3 rounded-full">
-                      <Instagram size={28} className="text-brand-green-800" />
-                    </div> */}
-                  </div>
-                </a>
-              ))}
-            </div>
+        {/* Tablet Horizontal Scroll - 3 reels side-by-side */}
+        <div className="hidden md:block lg:hidden mb-6">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {reels.map((reel) => (
+              <a
+                key={reel.id}
+                href={reel.reelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex-shrink-0 w-[calc(33.333%-12px)] aspect-[9/16] overflow-hidden rounded-2xl shadow-xl snap-start transition-transform duration-300 hover:scale-105"
+              >
+                <Image
+                  src={reel.thumbnail}
+                  alt={reel.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-all" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="bg-white/90 p-3 rounded-full">
+                    <Instagram size={28} className="text-brand-green-800" />
+                  </div> */}
+                </div>
+              </a>
+            ))}
           </div>
+        </div>
 
-          {/* Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all z-10"
-            aria-label="Previous reel"
-          >
-            <ChevronLeft size={24} className="text-brand-green-800" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all z-10"
-            aria-label="Next reel"
-          >
-            <ChevronRight size={24} className="text-brand-green-800" />
-          </button>
-
-          {/* Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
-            {reels.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all ${index === currentIndex ? 'bg-brand-green-800 w-8' : 'bg-gray-300'
-                  }`}
-              />
+        {/* Mobile Horizontal Scroll - 3 reels Instagram-style */}
+        <div className="md:hidden">
+          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {reels.map((reel) => (
+              <a
+                key={reel.id}
+                href={reel.reelUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex-shrink-0 w-[calc(33.333%-8px)] aspect-[9/16] overflow-hidden rounded-2xl shadow-xl snap-start transition-transform duration-300 active:scale-95"
+              >
+                <Image
+                  src={reel.thumbnail}
+                  alt={reel.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/5" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* <div className="bg-white/90 p-3 rounded-full">
+                    <Instagram size={28} className="text-brand-green-800" />
+                  </div> */}
+                </div>
+              </a>
             ))}
           </div>
         </div>

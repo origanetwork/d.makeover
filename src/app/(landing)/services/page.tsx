@@ -131,14 +131,14 @@ export default function ServicesPage() {
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             OUR SERVICES
                         </h1>
-                        <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Professional beauty and grooming services tailored for everyone
                         </p>
                     </div>
@@ -146,7 +146,7 @@ export default function ServicesPage() {
             </section>
 
             {/* Services Content */}
-            <section className="px-6 md:px-12 lg:px-24 py-16 md:py-20">
+            <section className="px-6 md:px-12 lg:px-24 py-8 md:py-12">
                 {/* Tab Selection */}
                 <div className='flex justify-center mb-12'>
                     <div className='flex p-3 bg-gray-100 rounded-xl gap-2'>

@@ -313,7 +313,7 @@ export default function BlogDetailPage() {
     return (
         <main className="bg-white">
             {/* Hero Section with Featured Image */}
-            <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+            <section className="relative h-[40vh] md:h-[40vh] overflow-hidden">
                 <Image
                     src={blog.image}
                     alt={blog.title}
@@ -321,12 +321,12 @@ export default function BlogDetailPage() {
                     className="object-cover brightness-50"
                     priority
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center mt-8">
                     <div className="max-w-4xl mx-auto px-6 text-center">
                         <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
                             <span className="text-white font-montserrat font-semibold">{blog.category}</span>
                         </div>
-                        <h1 className="font-felix-titling text-white text-3xl md:text-5xl lg:text-6xl tracking-wider mb-4">
+                        <h1 className="font-felix-titling text-white text-2xl md:text-5xl lg:text-6xl tracking-wider mb-4">
                             {blog.title}
                         </h1>
                         <div className="flex items-center justify-center gap-6 text-white">
@@ -415,7 +415,7 @@ export default function BlogDetailPage() {
                         </p>
                         <Link
                             href="/#contLinkct"
-                            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-12 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all font-montserrat"
+                            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-8 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all font-montserrat"
                         >
                             <span>Book Appointment</span>
                             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3">

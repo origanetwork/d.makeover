@@ -89,7 +89,7 @@ const Services: React.FC = () => {
 
                 {/* Tab Selection */}
                 <div className='flex justify-center lg:mb-8 mb-6'>
-                    <div className='flex p-3 bg-white rounded-xl gap-2'>
+                    <div className='flex p-3 bg-white rounded-xl'>
                         <button
                             onClick={() => {
                                 setActiveTab('women')
