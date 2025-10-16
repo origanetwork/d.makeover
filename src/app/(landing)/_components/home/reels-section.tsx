@@ -108,7 +108,7 @@ const ReelsSection: React.FC = () => {
 
         {/* Mobile Horizontal Scroll - 3 reels Instagram-style */}
         <div className="md:hidden">
-          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+          <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide bg-white">
             {reels.map((reel) => (
               <a
                 key={reel.id}
