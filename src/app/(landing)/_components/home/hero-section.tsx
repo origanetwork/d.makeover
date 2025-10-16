@@ -1,12 +1,57 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Image from 'next/image'
+
+// Define the structure for rotating content
+interface HeroContent {
+  id: string
+  title: string[]
+  subtitle: string
+  heroImage: string
+}
+
+// Configuration for rotating content (add as many as you want)
+const ROTATING_CONTENT: HeroContent[] = [
+  {
+    id: 'content-1',
+    title: ['REDEFINING STYLE,', 'RENEWING CONFIDENCE'],
+    subtitle: 'Where Beauty Meets Artistry - Discover A New You With Our Professional Makeover Services.',
+    heroImage: '/landing-page/home/hero-image-women.png',
+  },
+  {
+    id: 'content-2',
+    title: ['REFINED STYLE,', 'TIMELESS CHARISMA'],
+    subtitle: 'Groomed to perfection — confident, sophisticated, unmistakably you.',
+    heroImage: '/landing-page/home/hero-image-groom.png',
+  },
+  {
+    id: 'content-3',
+    title: ['RADIANT ELEGANCE,', 'UNFORGETTABLE MOMENTS'],
+    subtitle: 'Redefine your style with a touch of sophistication and timeless charm.',
+    heroImage: '/landing-page/home/hero-image-bride.png',
+  },
+]
+
+// Rotation interval in milliseconds 
+const ROTATION_INTERVAL = 3000
 
 const HeroSection: React.FC = () => {
 
   const [bgLoaded, setBgLoaded] = useState(false)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const imageRef = useRef<HTMLDivElement | null>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Rotate content every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % ROTATING_CONTENT.length)
+    }, ROTATION_INTERVAL)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentContent = ROTATING_CONTENT[currentIndex]
 
   return (
     <section id="home" className="relative isolate overflow-hidden h-[60vh] sm:h-[55vh] md:h-[60vh] lg:h-[85vh] xl:h-[90vh]">
@@ -35,7 +80,7 @@ const HeroSection: React.FC = () => {
         style={{ willChange: 'transform, opacity' }}
       >
         <Image
-          src='/landing-page/home/hero-image.png'
+          src={currentContent.heroImage}
           alt='makeover'
           fill
           placeholder="blur"
@@ -55,10 +100,10 @@ const HeroSection: React.FC = () => {
             style={{ willChange: 'transform, opacity' }}
           >
             <h1 className="hero-title text-white text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-normal tracking-wider font-felix-titling px-5 sm:px-0">
-              <span className="block md:inline">REDEFINING STYLE,</span>
-              <span className="block md:inline"> RENEWING CONFIDENCE</span>
+              <span className="block md:inline">{currentContent.title[0]}</span>
+              <span className="block md:inline"> {currentContent.title[1]}</span>
             </h1>
-            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 md:mx-0 lg:mx-0'>Where Beauty Meets Artistry - Discover A New You With Our Professional<br></br> Makeover Services.</h2>
+            <h2 className='text-white text-md sm:text-xl md:text-xl lg:text-2xl font-normal font-montserrat mt-6 mx-6 md:mx-0 lg:mx-0'>{currentContent.subtitle}</h2>
           </div>
         </div>
       </div>

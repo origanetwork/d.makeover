@@ -1,0 +1,223 @@
+'use client'
+
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { Instagram, X } from 'lucide-react'
+
+interface GalleryImage {
+    id: number
+    src: string
+    alt: string
+    category: string
+}
+
+export default function GalleryPage() {
+    const [selectedCategory, setSelectedCategory] = useState<string>('All')
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
+
+    const galleryImages: GalleryImage[] = [
+        {
+            id: 1,
+            src: '/landing-page/home/women-bridal.jpg',
+            alt: 'Bridal Makeover 1',
+            category: 'Bridal'
+        },
+        {
+            id: 2,
+            src: '/landing-page/home/women-hairstyle.jpg',
+            alt: 'Hair Styling 1',
+            category: 'Hair Styling'
+        },
+        {
+            id: 3,
+            src: '/landing-page/home/women-makeup.jpg',
+            alt: 'Makeup 1',
+            category: 'Makeup'
+        },
+        {
+            id: 4,
+            src: '/landing-page/home/women-nail.jpg',
+            alt: 'Nail Art 1',
+            category: 'Nail Art'
+        },
+        {
+            id: 5,
+            src: '/landing-page/home/men-haircut.jpg',
+            alt: 'Men\'s Haircut 1',
+            category: 'Men\'s Grooming'
+        },
+        {
+            id: 6,
+            src: '/landing-page/home/men-beardstyle.jpg',
+            alt: 'Beard Styling 1',
+            category: 'Men\'s Grooming'
+        },
+        {
+            id: 7,
+            src: '/landing-page/home/men-haircolor.jpg',
+            alt: 'Hair Color 1',
+            category: 'Hair Styling'
+        },
+        {
+            id: 8,
+            src: '/landing-page/home/men-facial.jpg',
+            alt: 'Facial Treatment 1',
+            category: 'Facial'
+        },
+        {
+            id: 9,
+            src: '/landing-page/home/gallery-1.png',
+            alt: 'Studio Work 1',
+            category: 'Bridal'
+        },
+        {
+            id: 10,
+            src: '/landing-page/home/gallery-2.png',
+            alt: 'Studio Work 2',
+            category: 'Makeup'
+        },
+        {
+            id: 11,
+            src: '/landing-page/home/gallery-3.png',
+            alt: 'Studio Work 3',
+            category: 'Hair Styling'
+        },
+        {
+            id: 12,
+            src: '/landing-page/home/gallery-shop.png',
+            alt: 'D. Makeover Studio',
+            category: 'Studio'
+        }
+    ]
+
+    const categories = ['All', 'Bridal', 'Hair Styling', 'Makeup', 'Nail Art', 'Men\'s Grooming', 'Facial', 'Studio']
+
+    const filteredImages = selectedCategory === 'All'
+        ? galleryImages
+        : galleryImages.filter(img => img.category === selectedCategory)
+
+    return (
+        <main className="bg-white">
+            {/* Hero Section */}
+            <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                        <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                            GALLERY
+                        </h1>
+                        <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
+                            Explore our work and get inspired for your next makeover
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Gallery Content */}
+            <section className="px-6 md:px-12 lg:px-24 py-16 md:py-20">
+                <div className="max-w-7xl mx-auto">
+                    {/* Category Filter */}
+                    <div className="flex flex-wrap justify-center gap-3 mb-12">
+                        {categories.map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => setSelectedCategory(category)}
+                                className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${
+                                    selectedCategory === category
+                                        ? 'bg-brand-green-800 text-white'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                }`}
+                            >
+                                {category}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Gallery Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+                        {filteredImages.map((image) => (
+                            <div
+                                key={image.id}
+                                className="relative aspect-square overflow-hidden rounded-xl shadow-lg cursor-pointer group"
+                                onClick={() => setSelectedImage(image)}
+                            >
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                                    <span className="text-white font-montserrat font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        View Image
+                                    </span>
+                                </div>
+                                <div className="absolute top-3 left-3 bg-white/90 px-3 py-1 rounded-full text-xs font-montserrat font-semibold text-brand-green-800">
+                                    {image.category}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Instagram Call to Action */}
+                    <div className="bg-gradient-to-r from-brand-green-800 to-brand-green-500 rounded-3xl p-12 text-center">
+                        <div className="max-w-2xl mx-auto">
+                            <div className="flex justify-center mb-6">
+                                <div className="bg-white rounded-full p-4">
+                                    <Instagram size={48} className="text-brand-green-800" />
+                                </div>
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-felix-titling text-white tracking-wider mb-4">
+                                FOLLOW US ON INSTAGRAM
+                            </h2>
+                            <p className="text-white font-montserrat text-lg mb-8">
+                                Stay updated with our latest work, beauty tips, and exclusive offers
+                            </p>
+                            <a
+                                href="https://www.instagram.com/d_dot_makeoverstudio/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-12 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 transition-all"
+                            >
+                                <Instagram size={20} />
+                                <span>@d_dot_makeoverstudio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Image Modal */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <button
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+                        onClick={() => setSelectedImage(null)}
+                        aria-label="Close modal"
+                    >
+                        <X size={32} />
+                    </button>
+                    <div
+                        className="relative max-w-5xl max-h-[90vh] w-full h-full"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <Image
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            fill
+                            className="object-contain"
+                        />
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 px-6 py-3 rounded-full">
+                            <p className="font-montserrat font-semibold text-brand-green-800">
+                                {selectedImage.alt}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </main>
+    )
+}

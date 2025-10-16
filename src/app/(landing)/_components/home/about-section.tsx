@@ -44,7 +44,7 @@ const About: React.FC = () => {
 
                     <div className="mt-5">
                         <a
-                            href="#"
+                            href="/about"
                             className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-gold-900 to-brand-gold-500 px-24 text-brand-green-800 font-bold hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                             aria-label={`Know more`}
                         >
