@@ -18,6 +18,8 @@ interface BlogPost {
 export default function BlogsPage() {
     const [selectedCategory, setSelectedCategory] = useState<string>('All')
     const [searchQuery, setSearchQuery] = useState<string>('')
+    const [subscribeEmail, setSubscribeEmail] = useState<string>('')
+    const [isSubscribing, setIsSubscribing] = useState<boolean>(false)
 
     const blogPosts: BlogPost[] = [
         {
@@ -91,6 +93,50 @@ export default function BlogsPage() {
         return matchesCategory && matchesSearch
     })
 
+    const handleSubscribe = async (e: React.FormEvent): Promise<void> => {
+        e.preventDefault()
+
+        if (isSubscribing) return
+
+        setIsSubscribing(true)
+
+        try {
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!subscribeEmail.trim() || !emailRegex.test(subscribeEmail)) {
+                alert('Please enter a valid email address.')
+                setIsSubscribing(false)
+                return
+            }
+
+            const subject = `Newsletter Subscription Request from ${subscribeEmail.trim()}`
+            const body =
+                `New Newsletter Subscription Request%0D%0A%0D%0A` +
+                `Email: ${subscribeEmail.trim()}%0D%0A%0D%0A` +
+                `The subscriber would like to receive updates about:%0D%0A` +
+                `- Latest beauty tips and trends%0D%0A` +
+                `- Exclusive offers and promotions%0D%0A` +
+                `- New blog posts and articles%0D%0A` +
+                `- Special events and announcements%0D%0A%0D%0A` +
+                `---%0D%0AThis message was sent from your website blog newsletter subscription form.`
+
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hishamoriga@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`
+
+            window.open(gmailLink, "_blank")
+
+            // Reset email input after short delay
+            setTimeout(() => {
+                setSubscribeEmail('')
+            }, 500)
+
+        } catch (error) {
+            console.error('Error subscribing:', error)
+            alert('An error occurred. Please try again or contact us directly at hishamoriga@gmail.com')
+        } finally {
+            setIsSubscribing(false)
+        }
+    }
+
     return (
         <main className="bg-white">
             {/* Hero Section */}
@@ -99,7 +145,7 @@ export default function BlogsPage() {
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                         <h1 className="font-felix-titling text-white text-5xl md:text-6xl lg:text-7xl tracking-wider mb-4">
-                            OUR BLOG
+                            OUR BLOGS
                         </h1>
                         <p className="font-montserrat text-white text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Beauty tips, trends, and expert advice from D. Makeover Studio
@@ -119,7 +165,7 @@ export default function BlogsPage() {
                                 placeholder="Search articles..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full px-6 py-4 pl-12 rounded-xl border-2 border-gray-200 focus:border-brand-green-800 focus:outline-none font-montserrat"
+                                className="w-full px-6 py-4 pl-12 rounded-xl border-2 border-gray-200 focus:border-brand-green-800 focus:outline-none font-montserrat text-gray-400"
                             />
                             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                         </div>
@@ -208,16 +254,24 @@ export default function BlogsPage() {
                     <p className="text-white font-montserrat text-lg mb-8">
                         Subscribe to our newsletter for the latest beauty tips, trends, and exclusive offers
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
+                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="flex-1 px-6 py-3 rounded-lg font-montserrat focus:outline-none focus:ring-2 focus:ring-white/50"
+                            value={subscribeEmail}
+                            onChange={(e) => setSubscribeEmail(e.target.value)}
+                            disabled={isSubscribing}
+                            required
+                            className="flex-1 px-6 py-3 rounded-lg font-montserrat focus:outline-none focus:ring-2 focus:ring-white/50 disabled:opacity-50 text-white"
                         />
-                        <button className="px-8 py-3 bg-gradient-to-l from-gold-900 to-brand-gold-500 text-brand-green-800 font-bold rounded-lg hover:brightness-95 transition-all font-montserrat">
-                            Subscribe
+                        <button
+                            type="submit"
+                            disabled={isSubscribing}
+                            className="px-8 py-3 bg-gradient-to-l from-gold-900 to-brand-gold-500 text-brand-green-800 font-bold rounded-lg hover:brightness-95 transition-all font-montserrat disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {isSubscribing ? 'Opening Email...' : 'Subscribe'}
                         </button>
-                    </div>
+                    </form>
                 </div>
             </section>
         </main>
