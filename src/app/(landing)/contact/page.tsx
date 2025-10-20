@@ -1,12 +1,18 @@
 'use client'
 
-import React, { FormEvent, useMemo, useState } from 'react'
+import React, { FormEvent, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Instagram, Phone, MapPin, Clock, Mail } from 'lucide-react'
 import { FaWhatsapp, FaFacebook } from 'react-icons/fa'
 import ClientOnly from '../_components/shared/ClientOnly'
+import { gsap } from 'gsap'
 
 export default function ContactPage() {
+
+  const heroRef = useRef<HTMLDivElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const mapQuery = "D. Makeover Studio, opposite ladies planet, near Nesto Hypermarket, Perinthalmanna, Kerala 679322"
@@ -93,7 +99,7 @@ export default function ContactPage() {
         `Message: ${message.trim()}%0D%0A%0D%0A` +
         `---%0D%0AThis message was sent from your website contact form.`
 
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hishamoriga@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=ddotmakeoverstudio@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`
 
       window.open(gmailLink, "_blank")
 
@@ -104,23 +110,48 @@ export default function ContactPage() {
 
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('An error occurred. Please try again or contact us directly at hishamoriga@gmail.com')
+      alert('An error occurred. Please try again or contact us directly at ddotmakeoverstudio@gmail.com')
     } finally {
       setIsSubmitting(false)
     }
   }
 
+  useEffect(() => {
+    if (!heroRef.current || !titleRef.current || !subtitleRef.current) return
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        titleRef.current,
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+      )
+      gsap.fromTo(
+        subtitleRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+      )
+    }, heroRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
         <div className="absolute inset-0 flex items-center justify-center pt-8">
           <div className="text-center">
-            <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+            <h1
+              ref={titleRef}
+              className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
               CONTACT US
             </h1>
-            <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
+            <p
+              ref={subtitleRef}
+              className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
               We had love to hear from you. Get in touch with us for appointments and inquiries.
             </p>
           </div>

@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Calendar, User, ArrowRight, Search } from 'lucide-react'
+import { gsap } from 'gsap'
 
 interface BlogPost {
     id: number
@@ -16,10 +17,35 @@ interface BlogPost {
 }
 
 export default function BlogsPage() {
+
+    const heroRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLHeadingElement | null>(null)
+    const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
     const [selectedCategory, setSelectedCategory] = useState<string>('All')
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [subscribeEmail, setSubscribeEmail] = useState<string>('')
     const [isSubscribing, setIsSubscribing] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (!heroRef.current || !titleRef.current || !subtitleRef.current) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                subtitleRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+        }, heroRef)
+
+        return () => ctx.revert()
+    }, [])
+
 
     const blogPosts: BlogPost[] = [
         {
@@ -89,7 +115,7 @@ export default function BlogsPage() {
     const filteredPosts = blogPosts.filter(post => {
         const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory
         const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
         return matchesCategory && matchesSearch
     })
 
@@ -120,7 +146,7 @@ export default function BlogsPage() {
                 `- Special events and announcements%0D%0A%0D%0A` +
                 `---%0D%0AThis message was sent from your website blog newsletter subscription form.`
 
-            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hishamoriga@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=ddotmakeoverstudio@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`
 
             window.open(gmailLink, "_blank")
 
@@ -131,7 +157,7 @@ export default function BlogsPage() {
 
         } catch (error) {
             console.error('Error subscribing:', error)
-            alert('An error occurred. Please try again or contact us directly at hishamoriga@gmail.com')
+            alert('An error occurred. Please try again or contact us directly at ddotmakeoverstudio@gmail.com')
         } finally {
             setIsSubscribing(false)
         }
@@ -140,14 +166,20 @@ export default function BlogsPage() {
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
+            <section
+                ref={heroRef}
+                className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1
+                            ref={titleRef}
+                            className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             OUR BLOGS
                         </h1>
-                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p
+                            ref={subtitleRef}
+                            className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Beauty tips, trends, and expert advice from D. Makeover Studio
                         </p>
                     </div>
@@ -177,11 +209,10 @@ export default function BlogsPage() {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${
-                                    selectedCategory === category
-                                        ? 'bg-brand-green-800 text-white'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
+                                className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${selectedCategory === category
+                                    ? 'bg-brand-green-800 text-white'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                    }`}
                             >
                                 {category}
                             </button>

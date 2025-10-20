@@ -1,8 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Instagram, X } from 'lucide-react'
+import { gsap } from 'gsap'
+
 
 interface GalleryImage {
     id: number
@@ -12,6 +14,11 @@ interface GalleryImage {
 }
 
 export default function GalleryPage() {
+
+    const heroRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLHeadingElement | null>(null)
+    const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
     const [selectedCategory, setSelectedCategory] = useState<string>('All')
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
@@ -96,17 +103,42 @@ export default function GalleryPage() {
         ? galleryImages
         : galleryImages.filter(img => img.category === selectedCategory)
 
+    useEffect(() => {
+        if (!heroRef.current || !titleRef.current || !subtitleRef.current) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                subtitleRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+        }, heroRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
+            <section
+                ref={heroRef}
+                className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1
+                            ref={titleRef}
+                            className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             GALLERY
                         </h1>
-                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p
+                            ref={subtitleRef}
+                            className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Explore our work and get inspired for your next makeover
                         </p>
                     </div>
@@ -122,11 +154,10 @@ export default function GalleryPage() {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${
-                                    selectedCategory === category
+                                className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${selectedCategory === category
                                         ? 'bg-brand-green-800 text-white'
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
+                                    }`}
                             >
                                 {category}
                             </button>

@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Calendar, User, ArrowLeft, Share2, Facebook, Twitter, Linkedin } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { gsap } from 'gsap'
 
 interface BlogContent {
     id: number
@@ -26,9 +27,39 @@ interface BlogContent {
 }
 
 export default function BlogDetailPage() {
+
+    const heroRef = useRef<HTMLDivElement | null>(null)
+    const tagRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLHeadingElement | null>(null)
+    const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
     const params = useParams()
     const router = useRouter()
     const blogId = parseInt(params.id as string)
+
+    useEffect(() => {
+        if (!heroRef.current || !tagRef.current || !titleRef.current || !subtitleRef.current) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                tagRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                subtitleRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+        }, heroRef)
+
+        return () => ctx.revert()
+    }, [])
 
     // Extended blog data with full content
     const blogData: BlogContent[] = [
@@ -313,7 +344,9 @@ export default function BlogDetailPage() {
     return (
         <main className="bg-white">
             {/* Hero Section with Featured Image */}
-            <section className="relative h-[40vh] md:h-[40vh] overflow-hidden">
+            <section
+                ref={heroRef}
+                className="relative h-[40vh] md:h-[40vh] lg:h-[50vh] overflow-hidden">
                 <Image
                     src={blog.image}
                     alt={blog.title}
@@ -323,13 +356,20 @@ export default function BlogDetailPage() {
                 />
                 <div className="absolute inset-0 flex items-center justify-center mt-8">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-                            <span className="text-white font-montserrat font-semibold">{blog.category}</span>
+                        <div
+                            ref={tagRef}
+                            className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+                            <span
+                                className="text-white font-montserrat font-semibold">{blog.category}</span>
                         </div>
-                        <h1 className="font-felix-titling text-white text-2xl md:text-5xl lg:text-6xl tracking-wider mb-4">
+                        <h1
+                            ref={titleRef}
+                            className="font-felix-titling text-white text-2xl md:text-5xl lg:text-6xl tracking-wider mb-4">
                             {blog.title}
                         </h1>
-                        <div className="flex items-center justify-center gap-6 text-white">
+                        <div
+                            ref={subtitleRef}
+                            className="flex items-center justify-center gap-6 text-white">
                             <div className="flex items-center gap-2">
                                 <Calendar size={18} />
                                 <span className="font-montserrat">{blog.date}</span>

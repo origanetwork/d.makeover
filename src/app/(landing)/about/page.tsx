@@ -1,22 +1,57 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { gsap } from 'gsap'
 
 export default function AboutPage() {
+
+    const heroRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLHeadingElement | null>(null)
+    const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
+    useEffect(() => {
+        if (!heroRef.current || !titleRef.current || !subtitleRef.current) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                subtitleRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+        }, heroRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
+            <section
+                ref={heroRef}
+                className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden"
+            >
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center pt-8">
-                    <div className="text-center">
-                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                    <div className="text-center px-6">
+                        <h1
+                            ref={titleRef}
+                            className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4 opacity-0"
+                        >
                             ABOUT US
                         </h1>
-                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
-                            Professional beauty and grooming services for everyone, designed to enhance your natural confidence.
+                        <p
+                            ref={subtitleRef}
+                            className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto opacity-0"
+                        >
+                            Professional beauty and grooming services for everyone, designed to
+                            enhance your natural confidence.
                         </p>
                     </div>
                 </div>
@@ -30,14 +65,14 @@ export default function AboutPage() {
                         Welcome to D. Makeover Studio
                     </h2>
                     <p className="text-xl text-brand-green-800 leading-8 font-montserrat font-normal mb-6">
-                        At D. Makeover Studio, we redefine beauty with style, care, and confidence.
-                        Our skilled stylists offer personalized hair, makeup, and grooming services
-                        to help you look radiant and feel empowered.
+                        At D. Makeover Studio, we build upon the <span className='font-bold'>10 years of trusted excellence established by Dezert Makeover Studio.</span> 
+                        Our skilled stylists continue this legacy by offering personalized hair, makeup, and grooming services to help you look radiant and feel empowered.
                     </p>
                     <p className="text-xl text-brand-green-800 leading-8 font-montserrat font-normal">
-                        With premium products, hygiene practices, and a client-first approach, we ensure
-                        every visit leaves you refreshed and confident. Whether it&apos;s a bridal makeover,
-                        a stylish haircut, or a complete transformation, we&apos;re here to bring out your best self.
+                        With premium products, rigorous hygiene practices, and a client-first approach,
+                        we ensure every visit leaves you refreshed and confident.
+                        Whether it is a bridal makeover, a stylish haircut, or a complete transformation,
+                        we are here to bring out your best self through our inherited expertise.
                     </p>
                 </div>
 
@@ -48,14 +83,13 @@ export default function AboutPage() {
                             Our Story
                         </h2>
                         <p className="text-lg text-brand-green-800 leading-7 font-montserrat mb-4">
-                            Founded with a passion for beauty and excellence, D. Makeover Studio has become
-                            a trusted name in Perinthalmanna. We started with a simple vision: to create a
-                            space where everyone feels beautiful, confident, and valued.
+                            Founded with a passion for beauty and excellence,
+                            Dezert Makeover Studio was established as the first unisex salon in Perinthalmanna.
+                            We started with a simple vision: to create a trusted space where everyone feels beautiful, confident, and valued.
                         </p>
                         <p className="text-lg text-brand-green-800 leading-7 font-montserrat">
-                            Over the years, we&apos;ve grown from a small studio to a premier destination for
-                            beauty and grooming services, serving hundreds of satisfied clients who trust us
-                            with their special moments.
+                            Over the past decade, the Dezert brand has grown into a premier destination with three successful showrooms serving the Malappuram district.
+                            Now, D. Makeover Studio stands proudly as our newest sister concern, expanding our legacy and continuing to provide exceptional, personalized beauty and grooming services for your special moments.
                         </p>
                     </div>
                     <div className="lg:w-1/2 relative h-[300px] md:h-[400px] lg:h-[500px]">

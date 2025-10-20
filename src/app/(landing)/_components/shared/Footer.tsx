@@ -84,6 +84,17 @@ const Footer: React.FC = () => {
           <p className="text-center text-xs sm:text-sm text-slate-200">
             © {currentYear} D. Makeover Studio. All rights reserved.
           </p>
+          <p className="text-center text-xs sm:text-sm text-slate-200">
+            Designed & Developed by{' '}
+            <a
+              href="https://origanetworks.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-gold-500 hover:underline hover:text-brand-gold-400 transition-colors"
+            >
+              Origa Networks
+            </a>.
+          </p>
         </div>
       </div>
 

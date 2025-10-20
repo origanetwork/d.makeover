@@ -75,7 +75,7 @@ const ContactSection: React.FC<Props> = ({
         `Message: ${message.trim()}%0D%0A%0D%0A` +
         `---%0D%0AThis message was sent from your website contact form.`;
 
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hishamoriga@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`;
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=ddotmakeoverstudio@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`;
 
       window.open(gmailLink, "_blank");
 
@@ -86,7 +86,7 @@ const ContactSection: React.FC<Props> = ({
 
     } catch (error) {
       console.error('Error submitting form:', error)
-      alert('An error occurred. Please try again or contact us directly at hishamoriga@gmail.com')
+      alert('An error occurred. Please try again or contact us directly at ddotmakeoverstudio@gmail.com')
     } finally {
       setIsSubmitting(false)
     }

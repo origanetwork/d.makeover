@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { IoMdCut } from 'react-icons/io'
@@ -12,8 +12,14 @@ import { GiBeard } from "react-icons/gi"
 import { FaSpa } from "react-icons/fa"
 import { GiHairStrands } from "react-icons/gi"
 import Link from 'next/link'
+import { gsap } from 'gsap'
 
 export default function ServicesPage() {
+
+    const heroRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLHeadingElement | null>(null)
+    const subtitleRef = useRef<HTMLParagraphElement | null>(null)
+
     const searchParams = useSearchParams()
     const tabParam = searchParams.get('tab')
     const [activeTab, setActiveTab] = useState<'women' | 'men'>('women')
@@ -128,17 +134,42 @@ export default function ServicesPage() {
 
     const currentServices = activeTab === 'women' ? womenServices : menServices
 
+    useEffect(() => {
+        if (!heroRef.current || !titleRef.current || !subtitleRef.current) return
+
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
+            )
+            gsap.fromTo(
+                subtitleRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
+            )
+        }, heroRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
         <main className="bg-white">
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
+            <section
+                ref={heroRef}
+                className="relative h-[40vh] md:h-[40vh] lg:h-[60vh] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green-800 to-brand-green-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center pt-8">
                     <div className="text-center">
-                        <h1 className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
+                        <h1
+                            ref={titleRef}
+                            className="font-felix-titling text-brand-gold-500 text-4xl md:text-6xl lg:text-7xl tracking-wider mb-4">
                             OUR SERVICES
                         </h1>
-                        <p className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
+                        <p
+                            ref={subtitleRef}
+                            className="font-montserrat text-white text-md lg:text-lg md:text-xl max-w-2xl mx-auto px-6">
                             Professional beauty and grooming services tailored for everyone
                         </p>
                     </div>
@@ -152,22 +183,20 @@ export default function ServicesPage() {
                     <div className='flex p-3 bg-gray-100 rounded-xl gap-2'>
                         <button
                             onClick={() => setActiveTab('women')}
-                            className={`lg:w-44 md:w-42 w-40 lg:px-6 md:px-5 px-3 py-3 rounded-lg font-montserrat font-bold transition-all flex items-center justify-center gap-2 ${
-                                activeTab === 'women'
+                            className={`lg:w-44 md:w-42 w-40 lg:px-6 md:px-5 px-3 py-3 rounded-lg font-montserrat font-bold transition-all flex items-center justify-center gap-2 ${activeTab === 'women'
                                     ? 'bg-brand-green-800 text-white'
                                     : 'bg-transparent text-gray-600 hover:bg-brand-green-800/10'
-                            }`}
+                                }`}
                         >
                             <IoWomanSharp size={20} />
                             For Women
                         </button>
                         <button
                             onClick={() => setActiveTab('men')}
-                            className={`lg:w-44 md:w-42 w-40 lg:px-6 md:px-5 px-3 py-3 rounded-lg font-montserrat font-bold transition-all flex items-center justify-center gap-2 ${
-                                activeTab === 'men'
+                            className={`lg:w-44 md:w-42 w-40 lg:px-6 md:px-5 px-3 py-3 rounded-lg font-montserrat font-bold transition-all flex items-center justify-center gap-2 ${activeTab === 'men'
                                     ? 'bg-brand-green-800 text-white'
                                     : 'bg-transparent text-gray-600 hover:bg-brand-green-800/10'
-                            }`}
+                                }`}
                         >
                             <IoManSharp size={20} />
                             For Men
