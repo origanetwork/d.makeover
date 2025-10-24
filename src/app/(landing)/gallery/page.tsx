@@ -31,7 +31,7 @@ export default function GalleryPage() {
         },
         {
             id: 2,
-            src: '/landing-page/home/women-hairstyle.jpg',
+            src: '/landing-page/home/hair2.jpg',
             alt: 'Hair Styling 1',
             category: 'Hair Styling'
         },
@@ -43,25 +43,25 @@ export default function GalleryPage() {
         },
         {
             id: 4,
-            src: '/landing-page/home/women-nail.jpg',
+            src: '/landing-page/home/Dezert Nail Art.jpg',
             alt: 'Nail Art 1',
             category: 'Nail Art'
         },
         {
             id: 5,
-            src: '/landing-page/home/men-haircut.jpg',
+            src: '/landing-page/home/groom1.jpg',
             alt: 'Men\'s Haircut 1',
             category: 'Men\'s Grooming'
         },
         {
             id: 6,
-            src: '/landing-page/home/men-beardstyle.jpg',
+            src: '/landing-page/home/gents_beared.jpg',
             alt: 'Beard Styling 1',
             category: 'Men\'s Grooming'
         },
         {
             id: 7,
-            src: '/landing-page/home/men-haircolor.jpg',
+            src: '/landing-page/home/hair1.jpg',
             alt: 'Hair Color 1',
             category: 'Hair Styling'
         },
@@ -85,16 +85,40 @@ export default function GalleryPage() {
         },
         {
             id: 11,
-            src: '/landing-page/home/gallery-3.png',
+            src: '/landing-page/home/hair7.jpg',
             alt: 'Studio Work 3',
             category: 'Hair Styling'
         },
         {
             id: 12,
-            src: '/landing-page/home/gallery-shop.png',
+            src: '/landing-page/home/STUDIO.webp',
             alt: 'D. Makeover Studio',
             category: 'Studio'
-        }
+        },
+        {
+            id: 13,
+            src: '/landing-page/home/hair3.jpg',
+            alt: 'Hair Styling 1',
+            category: 'Hair Styling'
+        },
+        {
+            id: 14,
+            src: '/landing-page/home/groom2.jpg',
+            alt: 'Men\'s Haircut 1',
+            category: 'Men\'s Grooming'
+        },{
+            id: 15,
+            src: '/landing-page/home/nailart2.JPG',
+            alt: 'Nail Art 1',
+            category: 'Nail Art'
+        },
+         {
+            id: 16,
+            src: '/landing-page/home/nailart3.JPG',
+            alt: 'Nail Art 1',
+            category: 'Nail Art'
+        },
+
     ]
 
     const categories = ['All', 'Bridal', 'Makeup', 'Nail Art', 'Facial', 'Studio', 'Hair Styling', 'Men\'s Grooming',]

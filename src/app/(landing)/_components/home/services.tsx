@@ -14,13 +14,7 @@ const Services: React.FC = () => {
     // const [currentIndex, setCurrentIndex] = useState(0)
 
     const womenServices = [
-        {
-            id: 1,
-            title: 'Bridal Makeover',
-            description: 'Elegant bridal makeovers for your big day.',
-            image: '/landing-page/home/women-bridal.jpg',
-            icon: IoMdColorPalette
-        },
+       
         {
             id: 2,
             title: 'Hair Styling',
@@ -34,6 +28,13 @@ const Services: React.FC = () => {
             description: 'Party, casual, and occasion-ready looks.',
             image: '/landing-page/home/women-makeup.jpg',
             icon: Sparkles
+        },
+         {
+            id: 1,
+            title: 'Bridal Makeover',
+            description: 'Elegant bridal makeovers for your big day.',
+            image: '/landing-page/home/women-bridal.jpg',
+            icon: IoMdColorPalette
         },
         {
             id: 4,
