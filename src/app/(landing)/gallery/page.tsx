@@ -49,7 +49,7 @@ export default function GalleryPage() {
         },
         {
             id: 5,
-            src: '/landing-page/home/groom1.jpg',
+            src: '/landing-page/home/groom1.JPG',
             alt: 'Men\'s Haircut 1',
             category: 'Men\'s Grooming'
         },
@@ -85,7 +85,7 @@ export default function GalleryPage() {
         },
         {
             id: 11,
-            src: '/landing-page/home/hair7.jpg',
+            src: '/landing-page/home/hair7.JPG',
             alt: 'Studio Work 3',
             category: 'Hair Styling'
         },
@@ -103,7 +103,7 @@ export default function GalleryPage() {
         },
         {
             id: 14,
-            src: '/landing-page/home/groom2.jpg',
+            src: '/landing-page/home/groom2.JPG',
             alt: 'Men\'s Haircut 1',
             category: 'Men\'s Grooming'
         },{
