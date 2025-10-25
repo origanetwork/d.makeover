@@ -27,18 +27,17 @@ export const metadata: Metadata = {
   description: "d dot makeover",
   icons: {
     icon: [
-      { url: "/favicon_ddot/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon_ddot/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico" },
+      { url: "/facivon/favicon.ico" },
+      { url: "/facivon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/facivon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     shortcut: [
       "favicon.ico",
     ],
     apple: [
-      { url: "/favicon_ddot/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/facivon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
-  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
