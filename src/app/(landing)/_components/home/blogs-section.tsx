@@ -21,7 +21,7 @@ const BlogsSection: React.FC = () => {
             id: 1,
             title: 'Top Bridal Makeup Trends for 2025',
             excerpt: 'Discover the latest bridal makeup trends that are taking over weddings this year. From natural glam to bold statements...',
-            image: '/landing-page/home/women-bridal.jpg',
+            image: '/landing-page/home/bridal-6.JPG',
             date: 'March 15, 2025',
             category: 'Bridal',
             readTime: '5 min read'
@@ -30,7 +30,7 @@ const BlogsSection: React.FC = () => {
             id: 2,
             title: 'Hair Care Tips for Healthy, Shiny Hair',
             excerpt: 'Learn essential hair care routines and tips to maintain healthy, shiny hair. Expert advice on products and treatments...',
-            image: '/landing-page/home/women-hairstyle.jpg',
+            image: '/landing-page/home/hair-style-1.JPG',
             date: 'March 10, 2025',
             category: 'Hair Care',
             readTime: '4 min read'

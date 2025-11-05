@@ -35,7 +35,7 @@ export default function ServicesPage() {
             id: 1,
             title: 'Bridal Makeover',
             description: 'Complete bridal package including makeup, hairstyling, and draping. Perfect for your special day with long-lasting results.',
-            image: '/landing-page/home/women-bridal.jpg',
+            image: '/landing-page/home/bridal-6.JPG',
             icon: IoMdColorPalette,
             features: ['HD Makeup', 'Hair Styling', 'Saree Draping', 'Pre-Bridal Services']
         },
@@ -43,7 +43,7 @@ export default function ServicesPage() {
             id: 2,
             title: 'Hair Styling',
             description: 'Expert haircuts, styling, coloring, and treatments. From subtle highlights to bold transformations.',
-            image: '/landing-page/home/women-hairstyle.jpg',
+            image: '/landing-page/home/hair1.jpg',
             icon: IoMdCut,
             features: ['Haircut & Styling', 'Hair Coloring', 'Highlights', 'Hair Spa', 'Keratin Treatment']
         },
@@ -51,7 +51,7 @@ export default function ServicesPage() {
             id: 3,
             title: 'Makeup Services',
             description: 'Professional makeup for all occasions. Party, casual, and event-ready looks customized for you.',
-            image: '/landing-page/home/women-makeup.jpg',
+            image: '/landing-page/home/makeup-1.JPG',
             icon: Sparkles,
             features: ['Party Makeup', 'Engagement Makeup', 'Reception Makeup', 'Air Brush Makeup']
         },
@@ -59,7 +59,7 @@ export default function ServicesPage() {
             id: 4,
             title: 'Nail Care',
             description: 'Trendy nail art, extensions, manicures, and pedicures. Complete nail care treatments.',
-            image: '/landing-page/home/women-nail.jpg',
+            image: '/landing-page/home/nail-art-3.JPG',
             icon: FaRegHand,
             features: ['Manicure & Pedicure', 'Nail Art', 'Nail Extensions', 'Nail Polish']
         },
@@ -67,7 +67,7 @@ export default function ServicesPage() {
             id: 5,
             title: 'Facial & Skin Care',
             description: 'Rejuvenating facial treatments and skin care services for glowing, healthy skin.',
-            image: '/landing-page/home/women-bridal.jpg',
+            image: '/landing-page/home/makeup-2.JPG',
             icon: FaSpa,
             features: ['Classic Facial', 'Gold Facial', 'Diamond Facial', 'Skin Treatments']
         },
@@ -75,7 +75,7 @@ export default function ServicesPage() {
             id: 6,
             title: 'Hair Treatments',
             description: 'Specialized hair treatments for damaged, colored, or chemically treated hair.',
-            image: '/landing-page/home/women-hairstyle.jpg',
+            image: '/landing-page/home/hair-style-1.JPG',
             icon: GiHairStrands,
             features: ['Hair Spa', 'Keratin Treatment', 'Smoothening', 'Rebonding']
         }

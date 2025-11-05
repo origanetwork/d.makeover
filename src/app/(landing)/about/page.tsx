@@ -94,7 +94,7 @@ export default function AboutPage() {
                     </div>
                     <div className="lg:w-1/2 relative h-[300px] md:h-[400px] lg:h-[500px]">
                         <Image
-                            src='/landing-page/home/gallery-shop.png'
+                            src='/landing-page/home/story-img.jpg'
                             alt='D. Makeover Studio Interior'
                             fill
                             className="object-cover rounded-2xl shadow-lg"

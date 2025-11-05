@@ -25,25 +25,25 @@ export default function GalleryPage() {
     const galleryImages: GalleryImage[] = [
         {
             id: 1,
-            src: '/landing-page/home/women-bridal.jpg',
+            src: '/landing-page/home/bridal-6.JPG',
             alt: 'Bridal Makeover 1',
             category: 'Bridal'
         },
         {
             id: 2,
-            src: '/landing-page/home/hair2.jpg',
+            src: '/landing-page/home/women-hairColor-1.JPG',
             alt: 'Hair Styling 1',
             category: 'Hair Styling'
         },
         {
             id: 3,
-            src: '/landing-page/home/women-makeup.jpg',
+            src: '/landing-page/home/makeup-1.JPG',
             alt: 'Makeup 1',
             category: 'Makeup'
         },
         {
             id: 4,
-            src: '/landing-page/home/Dezert Nail Art.jpg',
+            src: '/landing-page/home/nailart1.JPG',
             alt: 'Nail Art 1',
             category: 'Nail Art'
         },
@@ -67,56 +67,92 @@ export default function GalleryPage() {
         },
         {
             id: 8,
-            src: '/landing-page/home/men-facial.jpg',
+            src: '/landing-page/home/facial-1.PNG',
             alt: 'Facial Treatment 1',
             category: 'Facial'
         },
         {
             id: 9,
-            src: '/landing-page/home/gallery-1.png',
+            src: '/landing-page/home/bridal-1.JPG',
             alt: 'Studio Work 1',
             category: 'Bridal'
         },
         {
             id: 10,
-            src: '/landing-page/home/gallery-2.png',
-            alt: 'Studio Work 2',
-            category: 'Makeup'
-        },
-        {
-            id: 11,
             src: '/landing-page/home/hair7.JPG',
             alt: 'Studio Work 3',
             category: 'Hair Styling'
         },
         {
-            id: 12,
+            id: 11,
             src: '/landing-page/home/STUDIO.webp',
             alt: 'D. Makeover Studio',
             category: 'Studio'
         },
         {
-            id: 13,
+            id: 12,
             src: '/landing-page/home/hair3.jpg',
             alt: 'Hair Styling 1',
             category: 'Hair Styling'
         },
         {
-            id: 14,
+            id: 13,
             src: '/landing-page/home/groom2.JPG',
             alt: 'Men\'s Haircut 1',
             category: 'Men\'s Grooming'
-        },{
-            id: 15,
-            src: '/landing-page/home/nailart2.JPG',
+        }, {
+            id: 14,
+            src: '/landing-page/home/nailart4.JPG',
             alt: 'Nail Art 1',
             category: 'Nail Art'
         },
-         {
+        {
+            id: 15,
+            src: '/landing-page/home/bridal-2.JPG',
+            alt: 'Bridal Makeover 1',
+            category: 'Bridal'
+        },
+        {
             id: 16,
-            src: '/landing-page/home/nailart3.JPG',
-            alt: 'Nail Art 1',
-            category: 'Nail Art'
+            src: '/landing-page/home/bridal-3.JPG',
+            alt: 'Bridal Makeover 1',
+            category: 'Bridal'
+        },
+        {
+            id: 17,
+            src: '/landing-page/home/facial-2.PNG',
+            alt: 'Facial Treatment 1',
+            category: 'Facial'
+        },
+        {
+            id: 18,
+            src: '/landing-page/home/women-hairColor-2.JPG',
+            alt: 'Hair Color 1',
+            category: 'Hair Styling'
+        },
+        {
+            id: 19,
+            src: '/landing-page/home/groom-3.JPG',
+            alt: 'Men\'s Haircut 1',
+            category: 'Men\'s Grooming'
+        },
+        {
+            id: 20,
+            src: '/landing-page/home/groom-4.JPG',
+            alt: 'Men\'s Haircut 1',
+            category: 'Men\'s Grooming'
+        },
+        {
+            id: 21,
+            src: '/landing-page/home/groom-5.JPG',
+            alt: 'Men\'s Haircut 1',
+            category: 'Men\'s Grooming'
+        },
+         {
+            id: 22,
+            src: '/landing-page/home/makeup-2.JPG',
+            alt: 'Makeup 2',
+            category: 'Makeup'
         },
 
     ]
@@ -179,8 +215,8 @@ export default function GalleryPage() {
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`px-6 py-2 rounded-full font-montserrat font-semibold transition-all ${selectedCategory === category
-                                        ? 'bg-brand-green-800 text-white'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                    ? 'bg-brand-green-800 text-white'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                     }`}
                             >
                                 {category}

@@ -10,9 +10,9 @@ const Gallery: React.FC = () => {
 
     // Replace these with your actual image paths
     const images = [
-        '/landing-page/home/hair7.JPG',
+        '/landing-page/home/hair-color.JPG',
         '/landing-page/home/groom1.JPG',
-        '/landing-page/home/gallery-3.png',
+        '/landing-page/home/bridal-2.JPG',
     ]
 
     useEffect(() => {
@@ -161,7 +161,7 @@ const Gallery: React.FC = () => {
                 {/* Shop Image */}
                 <div className='relative aspect-square lg:aspect-[2/1] lg:w-[calc(66.666%-6px)] overflow-hidden shadow-lg flex-shrink-0'>
                     <Image
-                        src='/landing-page/home/gallery-shop.png'
+                        src='/landing-page/home/studio.jpg'
                         alt='Gallery shop'
                         fill
                         sizes="(max-width: 1024px) 100vw, 66vw"

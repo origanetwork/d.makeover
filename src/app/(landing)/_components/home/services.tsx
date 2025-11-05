@@ -19,28 +19,28 @@ const Services: React.FC = () => {
             id: 2,
             title: 'Hair Styling',
             description: 'From subtle highlights to bold transformations.',
-            image: '/landing-page/home/women-hairstyle.jpg',
+            image: '/landing-page/home/hair-style-1.JPG',
             icon: IoMdCut
         },
         {
             id: 3,
             title: 'Makeup',
             description: 'Party, casual, and occasion-ready looks.',
-            image: '/landing-page/home/women-makeup.jpg',
+            image: '/landing-page/home/makeup-1.JPG',
             icon: Sparkles
         },
          {
             id: 1,
             title: 'Bridal Makeover',
             description: 'Elegant bridal makeovers for your big day.',
-            image: '/landing-page/home/women-bridal.jpg',
+            image: '/landing-page/home/bridal-6.JPG',
             icon: IoMdColorPalette
         },
         {
             id: 4,
             title: 'Nail Care',
             description: 'Trendy nail art, extensions, and care treatments.',
-            image: '/landing-page/home/women-nail.jpg',
+            image: '/landing-page/home/nail-art-3.JPG',
             icon: FaRegHand
         }
     ]
