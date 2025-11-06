@@ -11,7 +11,7 @@ const Gallery: React.FC = () => {
     // Replace these with your actual image paths
     const images = [
         '/landing-page/home/hair-color.JPG',
-        '/landing-page/home/groom1.JPG',
+        '/landing-page/home/groom-3.JPG',
         '/landing-page/home/bridal-2.JPG',
     ]
 
