@@ -16,19 +16,19 @@ const ROTATING_CONTENT: HeroContent[] = [
     id: 'content-1',
     title: ['REDEFINING STYLE,', 'RENEWING CONFIDENCE'],
     subtitle: 'Where Beauty Meets Artistry - Discover A New You With Our Professional Makeover Services.',
-    heroImage: '/landing-page/home/hero-image-women.png',
+    heroImage: '/landing-page/home/banner-bride.png',
   },
   {
     id: 'content-2',
     title: ['REFINED STYLE,', 'TIMELESS CHARISMA'],
     subtitle: 'Groomed to perfection — confident, sophisticated, unmistakably you.',
-    heroImage: '/landing-page/home/hero-image-groom.png',
+    heroImage: '/landing-page/home/banner-groomm.png',
   },
   {
     id: 'content-3',
     title: ['RADIANT ELEGANCE,', 'UNFORGETTABLE MOMENTS'],
     subtitle: 'Redefine your style with a touch of sophistication and timeless charm.',
-    heroImage: '/landing-page/home/hero-image-bride.png',
+    heroImage: '/landing-page/home/banner-girl.png',
   },
 ]
 

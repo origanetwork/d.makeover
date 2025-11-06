@@ -85,7 +85,7 @@ export default function GalleryPage() {
         },
         {
             id: 11,
-            src: '/landing-page/home/STUDIO.webp',
+            src: '/landing-page/home/studio-2.jpg',
             alt: 'D. Makeover Studio',
             category: 'Studio'
         },

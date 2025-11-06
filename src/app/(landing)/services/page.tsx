@@ -126,7 +126,7 @@ export default function ServicesPage() {
             id: 6,
             title: 'Grooming Package',
             description: 'Complete grooming services including haircut, beard styling, and facial treatments.',
-            image: '/landing-page/home/men-beardstyle.jpg',
+            image: '/landing-page/home/grooming.JPG',
             icon: GiHairStrands,
             features: ['Hair Cut', 'Beard Styling', 'Face Cleanup', 'Head Massage']
         }
