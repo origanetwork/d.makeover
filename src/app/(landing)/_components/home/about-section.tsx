@@ -17,13 +17,13 @@ const About: React.FC = () => {
                     style={{ willChange: 'transform, opacity' }}
                 >
                     <Image
-                        src='/landing-page/home/about-us-image.png'
+                        src='/landing-page/home/about-bride.png'
                         alt='makeover'
                         width={500}
                         height={500}
                         placeholder="blur"
                         blurDataURL="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><rect width='10' height='10' fill='%231b3a8a'/></svg>"
-                        className="object-contain"
+                        className="object-contain bg-gradient-to-t from-brand-gold-500 via-brand-gold-500/50 to-white shadow-lg rounded-b-lg"
                         aria-hidden="true"
                     />
                 </div>
