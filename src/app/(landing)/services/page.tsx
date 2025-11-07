@@ -102,7 +102,7 @@ export default function ServicesPage() {
             id: 3,
             title: 'Hair Color',
             description: 'Professional hair coloring and highlighting services. Natural or bold colors as per your choice.',
-            image: '/landing-page/home/men-haircolor.jpg',
+            image: '/landing-page/home/hair-color-1.PNG',
             icon: IoMdColorPalette,
             features: ['Full Coloring', 'Highlights', 'Grey Coverage', 'Fashion Colors']
         },

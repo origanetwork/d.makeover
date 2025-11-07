@@ -64,7 +64,7 @@ const Services: React.FC = () => {
             id: 3,
             title: 'Hair Color',
             description: 'Hair coloring and highlighting services',
-            image: '/landing-page/home/men-haircolor.jpg',
+            image: '/landing-page/home/hair-color-1.PNG',
             icon: IoMdColorPalette
         },
         {
