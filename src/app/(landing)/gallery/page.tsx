@@ -50,7 +50,7 @@ export default function GalleryPage() {
         {
             id: 5,
             src: '/landing-page/home/groom1.JPG',
-            alt: 'Men\'s Haircut 1',
+            alt: 'Men\'s Grooming 1',
             category: 'Men\'s Grooming'
         },
         {
@@ -62,7 +62,7 @@ export default function GalleryPage() {
         {
             id: 7,
             src: '/landing-page/home/hair1.jpg',
-            alt: 'Hair Color 1',
+            alt: 'Hair Styling 1',
             category: 'Hair Styling'
         },
         {
@@ -74,13 +74,13 @@ export default function GalleryPage() {
         {
             id: 9,
             src: '/landing-page/home/bridal-1.JPG',
-            alt: 'Studio Work 1',
+            alt: 'Bridal Makeover 2',
             category: 'Bridal'
         },
         {
             id: 10,
             src: '/landing-page/home/hair7.JPG',
-            alt: 'Studio Work 3',
+            alt: 'Hair Styling 2',
             category: 'Hair Styling'
         },
         {
@@ -92,60 +92,60 @@ export default function GalleryPage() {
         {
             id: 12,
             src: '/landing-page/home/hair3.jpg',
-            alt: 'Hair Styling 1',
+            alt: 'Hair Styling 3',
             category: 'Hair Styling'
         },
         {
             id: 13,
             src: '/landing-page/home/groom2.JPG',
-            alt: 'Men\'s Haircut 1',
+            alt: 'Men\'s Grooming 2',
             category: 'Men\'s Grooming'
         }, {
             id: 14,
             src: '/landing-page/home/nailart4.JPG',
-            alt: 'Nail Art 1',
+            alt: 'Nail Art 2',
             category: 'Nail Art'
         },
         {
             id: 15,
             src: '/landing-page/home/bridal-2.JPG',
-            alt: 'Bridal Makeover 1',
+            alt: 'Bridal Makeover 3',
             category: 'Bridal'
         },
         {
             id: 16,
             src: '/landing-page/home/bridal-3.JPG',
-            alt: 'Bridal Makeover 1',
+            alt: 'Bridal Makeover 4',
             category: 'Bridal'
         },
         {
             id: 17,
             src: '/landing-page/home/facial-2.PNG',
-            alt: 'Facial Treatment 1',
+            alt: 'Facial Treatment 2',
             category: 'Facial'
         },
         {
             id: 18,
             src: '/landing-page/home/women-hairColor-2.JPG',
-            alt: 'Hair Color 1',
+            alt: 'Hair Styling 4',
             category: 'Hair Styling'
         },
         {
             id: 19,
             src: '/landing-page/home/groom-3.JPG',
-            alt: 'Men\'s Haircut 1',
+            alt: 'Men\'s Grooming 3',
             category: 'Men\'s Grooming'
         },
         {
             id: 20,
             src: '/landing-page/home/groom-4.JPG',
-            alt: 'Men\'s Haircut 1',
+            alt: 'Men\'s Grooming 4',
             category: 'Men\'s Grooming'
         },
         {
             id: 21,
             src: '/landing-page/home/groom-5.JPG',
-            alt: 'Men\'s Haircut 1',
+            alt: 'Men\'s Grooming 5',
             category: 'Men\'s Grooming'
         },
          {
