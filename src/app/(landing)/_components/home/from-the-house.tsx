@@ -41,10 +41,10 @@ const FromTheHouse: React.FC = () => {
                     />
                     <div className='absolute inset-0 bg-black opacity-30'></div>
                     <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3 text-white'>
-                        <h3 className='font-montserrat font-semibold text-2xl'>Thirur</h3>
+                        <h3 className='font-montserrat font-semibold text-2xl'>Tirur</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
-                            <p className='font-montserrat text-xl'>Edappal - Thirur Rd</p>
+                            <p className='font-montserrat text-xl'>Edappal - Tirur Rd</p>
                         </span>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ const FromTheHouse: React.FC = () => {
                     />
                     <div className='absolute inset-0 bg-black opacity-30'></div>
                     <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3'>
-                        <h3 className='font-montserrat font-semibold text-2xl'>Kottakal</h3>
+                        <h3 className='font-montserrat font-semibold text-2xl'>Kottakkal</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
                             <p className='font-montserrat text-xl'>NH 66 Parambilangadi</p>

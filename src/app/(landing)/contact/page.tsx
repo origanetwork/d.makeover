@@ -45,19 +45,19 @@ export default function ContactPage() {
     },
     {
       id: 2,
-      name: 'Thirur',
-      address: 'Edappal - Thirur Rd',
+      name: 'Tirur',
+      address: 'Edappal - Tirur Rd',
       fullAddress: 'Edappal - Tirur Rd, near Indian Oil Petrol Pump Pottethappadi, Tirur, Kerala 676101',
       image: '/landing-page/home/dezert-thirur.png',
       mapQuery: 'Dezert Thirur, Edappal - Thirur Rd, Kerala',
     },
     {
       id: 3,
-      name: 'Kottakal',
+      name: 'Kottakkal',
       address: 'NH 66 Parambilangadi',
-      fullAddress: 'NH 66, Parambilangadi, Palathara Kottakal, Kerala 676501',
+      fullAddress: 'NH 66, Parambilangadi, Palathara Kottakkal, Kerala 676501',
       image: '/landing-page/home/dezert-kottakal.png',
-      mapQuery: 'Dezert Kottakal, NH 66 Parambilangadi, Kerala',
+      mapQuery: 'Dezert Kottakkal, NH 66 Parambilangadi, Kerala',
     },
   ]
 
