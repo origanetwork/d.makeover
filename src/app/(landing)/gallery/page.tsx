@@ -154,6 +154,12 @@ export default function GalleryPage() {
             alt: 'Makeup 2',
             category: 'Makeup'
         },
+        {
+            id: 23,
+            src: '/landing-page/home/facial-3.PNG',
+            alt: 'Facial Treatment 3',
+            category: 'Facial'
+        },
 
     ]
 

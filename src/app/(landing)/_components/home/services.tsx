@@ -24,9 +24,9 @@ const Services: React.FC = () => {
         },
         {
             id: 3,
-            title: 'Makeup',
+            title: 'Facial',
             description: 'Party, casual, and occasion-ready looks.',
-            image: '/landing-page/home/makeup-1.JPG',
+            image: '/landing-page/home/facial-3.PNG',
             icon: Sparkles
         },
          {
