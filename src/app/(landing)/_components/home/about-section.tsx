@@ -9,18 +9,18 @@ const About: React.FC = () => {
 
     return (
         <section id="about" className="px-6 md:px-12 lg:px-24 bg-white pt-6 md:pt-8 lg:pt-24">
-            <div className="flex flex-col-reverse lg:flex-row lg:justify-between items-center lg:items-start gap-12 max-w-7xl mx-auto">
+            <div className="flex flex-col-reverse lg:flex-row lg:justify-between items-center lg:items-start gap-12 max-w-7xl mx-auto xs:mb-10">
                 {/* Image Container - Fixed dimensions */}
                 <div
                     ref={imageRef}
-                    className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[450px] md:w-[450px] lg:h-[600px] lg:w-[600px] lg:-mb-12 mx-auto lg:mx-0"
+                    className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[450px] md:w-[450px] lg:h-[600px] lg:w-[600px] lg:-mb-12 mx-auto lg:mx-0 lg:ml-10"
                     style={{ willChange: 'transform, opacity' }}
                 >
                     <Image
-                        src='/landing-page/home/about-bride.png'
+                        src='/landing-page/home/about-groom.png'
                         alt='makeover'
-                        width={500}
-                        height={500}
+                        width={420}
+                        height={420}
                         placeholder="blur"
                         blurDataURL="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><rect width='10' height='10' fill='%231b3a8a'/></svg>"
                         className="object-contain bg-gradient-to-t from-brand-gold-500 via-brand-gold-500/50 to-white shadow-lg rounded-b-lg"

@@ -16,7 +16,7 @@ const ROTATING_CONTENT: HeroContent[] = [
     id: 'content-1',
     title: ['REDEFINING STYLE,', 'RENEWING CONFIDENCE'],
     subtitle: 'Where Beauty Meets Artistry - Discover A New You With Our Professional Makeover Services.',
-    heroImage: '/landing-page/home/banner-bride.png',
+    heroImage: '/landing-page/home/banner-groom1.png',
   },
   {
     id: 'content-2',

@@ -160,6 +160,12 @@ export default function GalleryPage() {
             alt: 'Facial Treatment 3',
             category: 'Facial'
         },
+        {
+            id: 24,
+            src: '/landing-page/home/groom-6.jpg',
+            alt: 'Men\'s Grooming 6',
+            category: 'Men\'s Grooming'
+        },
 
     ]
 

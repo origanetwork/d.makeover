@@ -12,7 +12,7 @@ const Gallery: React.FC = () => {
     const images = [
         '/landing-page/home/hair-color.JPG',
         '/landing-page/home/groom-3.JPG',
-        '/landing-page/home/bridal-2.JPG',
+        '/landing-page/home/groom-6.jpg',
     ]
 
     useEffect(() => {
