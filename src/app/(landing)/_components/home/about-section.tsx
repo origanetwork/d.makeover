@@ -13,7 +13,7 @@ const About: React.FC = () => {
                 {/* Image Container - Fixed dimensions */}
                 <div
                     ref={imageRef}
-                    className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[450px] md:w-[450px] lg:h-[600px] lg:w-[600px] lg:-mb-12 mx-auto lg:mx-0 lg:ml-10"
+                    className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[450px] md:w-[450px] lg:h-[600px] lg:w-[600px] mb-8 lg:-mb-12 mx-auto lg:mx-0 lg:ml-10"
                     style={{ willChange: 'transform, opacity' }}
                 >
                     <Image
