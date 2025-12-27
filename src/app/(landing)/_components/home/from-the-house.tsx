@@ -21,7 +21,7 @@ const FromTheHouse: React.FC = () => {
                         style={{ objectPosition: 'center 5%' }}
                     />
                     <div className='absolute inset-0 bg-black opacity-30 '></div>
-                    <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3'>
+                    <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3 text-white'>
                         <h3 className='font-montserrat font-semibold text-2xl'>Perinthalmanna</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
@@ -59,7 +59,7 @@ const FromTheHouse: React.FC = () => {
                         style={{ objectPosition: 'center 10%' }}
                     />
                     <div className='absolute inset-0 bg-black opacity-30'></div>
-                    <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3'>
+                    <div className='absolute bottom-4 left-4 rounded-lg px-4 py-3 text-white'>
                         <h3 className='font-montserrat font-semibold text-2xl'>Kottakkal</h3>
                         <span className='flex gap-1 items-center'>
                             <IoLocationOutline className="w-5 h-5" />
